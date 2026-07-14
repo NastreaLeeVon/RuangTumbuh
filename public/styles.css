@@ -938,7 +938,7 @@ img {
     
     .team-image img {
         object-fit: cover;
-        object-position: center top;
+        object-position: center 60%;
     }
     
     .team-info {
@@ -968,7 +968,7 @@ img {
     
     .team-image img {
         object-fit: cover;
-        object-position: center top;
+        object-position: center 60%;
     }
     
     .team-social a {
@@ -1176,7 +1176,7 @@ img {
     
     .team-modal-image img {
         object-fit: cover;
-        object-position: center top;
+        object-position: center 60%;
     }
 }
 
