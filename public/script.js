@@ -680,12 +680,12 @@ function initTeamModal() {
             description: 'Berpengalaman dalam mengembangkan strategi organisasi, membangun kolaborasi, serta memastikan setiap program memberikan pengalaman yang bermakna bagi peserta. Teresia memiliki passion dalam membangun sistem yang berkelanjutan dan menciptakan dampak jangka panjang bagi komunitas.',
             social: [
                 { icon: 'fab fa-instagram', url: 'https://www.instagram.com/teresibaraniii/' },
-                { icon: 'fab fa-whatsapp', url: 'https://wa.me/82114976525' },
+                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6282114976525' },
             ],
             quote: 'Kolaborasi adalah kunci. Ketika kita bekerja bersama, dampak yang kita ciptakan menjadi jauh lebih besar daripada jumlah bagian-bagiannya.'
         },
         3: {
-            name: 'Salsabila Nadhifa',
+            name: 'Syifa Salsabila Nadhifah',
             role: 'Co-Founder',
             photo: 'Aset/Nad.jpeg',
             description: 'Berpengalaman dalam memperkuat pengembangan program dan komunitas, serta menciptakan lingkungan yang inklusif untuk belajar dan bertumbuh. Salsabila memastikan bahwa setiap program Ruang Tumbuh dirancang dengan pendekatan yang manusiawi dan berpusat pada kebutuhan peserta.',
