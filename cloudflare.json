@@ -1,0 +1,8 @@
+{
+  "name": "ruangtumbuh",
+  "type": "pages",
+  "build": {
+    "command": "echo 'No build needed'",
+    "output": "public"
+  }
+}
