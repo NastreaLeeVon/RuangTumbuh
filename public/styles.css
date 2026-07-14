@@ -933,7 +933,12 @@ img {
     }
     
     .team-image {
-        height: 210px;
+        height: 240px;
+    }
+    
+    .team-image img {
+        object-fit: contain;
+        object-position: top center;
     }
     
     .team-info {
@@ -941,6 +946,12 @@ img {
     }
     
     .team-info h3 {
+        font-size: 1rem;
+    }
+    
+    .team-social a {
+        width: 40px;
+        height: 40px;
         font-size: 1rem;
     }
 }
@@ -952,7 +963,18 @@ img {
     }
     
     .team-image {
-        height: 220px;
+        height: 280px;
+    }
+    
+    .team-image img {
+        object-fit: contain;
+        object-position: top center;
+    }
+    
+    .team-social a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
     }
 }
 
@@ -1034,6 +1056,8 @@ img {
     display: grid;
     grid-template-columns: 1fr 1.3fr;
     gap: 0;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .team-modal-image {
@@ -1053,6 +1077,7 @@ img {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .team-modal-role {
@@ -1142,10 +1167,16 @@ img {
     
     .team-modal-body {
         grid-template-columns: 1fr;
+        max-height: 85vh;
     }
     
     .team-modal-image {
-        min-height: 250px;
+        min-height: 300px;
+    }
+    
+    .team-modal-image img {
+        object-fit: contain;
+        object-position: top center;
     }
 }
 
