@@ -937,8 +937,8 @@ img {
     }
     
     .team-image img {
-        object-fit: contain;
-        object-position: top center;
+        object-fit: cover;
+        object-position: center top;
     }
     
     .team-info {
@@ -967,8 +967,8 @@ img {
     }
     
     .team-image img {
-        object-fit: contain;
-        object-position: top center;
+        object-fit: cover;
+        object-position: center top;
     }
     
     .team-social a {
@@ -1175,8 +1175,8 @@ img {
     }
     
     .team-modal-image img {
-        object-fit: contain;
-        object-position: top center;
+        object-fit: cover;
+        object-position: center top;
     }
 }
 
