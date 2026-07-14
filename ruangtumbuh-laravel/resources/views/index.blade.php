@@ -499,6 +499,21 @@
                         <div class="video-play-btn"><i class="fas fa-play"></i></div>
                     </div>
                 </div>
+
+                <div class="gallery-item gallery-extra hidden" data-type="video" data-date="2026-06-27" data-year="2026">
+                    <div class="gallery-image">
+                        <video class="gallery-media" preload="metadata" muted playsinline poster="">
+                            <source src="{{ asset('Aset/15.mp4') }}" type="video/mp4">
+                        </video>
+                        <div class="gallery-overlay">
+                            <span class="gallery-type"><i class="fas fa-play"></i> Video</span>
+                            <span class="gallery-title">Kasih W Kasih O Kasih W, WOW Keren, WOW WOW Keren,</span>
+                            <span class="gallery-date"><i class="fas fa-calendar-alt"></i> 27 Juni 2026</span>
+                        </div>
+                        <div class="video-play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Gallery "Lainnya" Toggle Button -->
