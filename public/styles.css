@@ -933,12 +933,12 @@ img {
     }
     
     .team-image {
-        height: 240px;
+        height: 320px;
     }
     
     .team-image img {
         object-fit: cover;
-        object-position: center 70%;
+        object-position: center 75%;
     }
     
     .team-info {
@@ -963,12 +963,12 @@ img {
     }
     
     .team-image {
-        height: 280px;
+        height: 360px;
     }
     
     .team-image img {
         object-fit: cover;
-        object-position: center 70%;
+        object-position: center 75%;
     }
     
     .team-social a {
@@ -1176,7 +1176,7 @@ img {
     
     .team-modal-image img {
         object-fit: cover;
-        object-position: center 70%;
+        object-position: center 75%;
     }
 }
 
