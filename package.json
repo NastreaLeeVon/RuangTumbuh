@@ -1,8 +1,0 @@
-{
-  "name": "ruangtumbuh-static-site",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "deploy": "echo 'Static site ready for Cloudflare Pages deployment'"
-  }
-}
