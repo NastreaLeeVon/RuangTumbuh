@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program - Ruang Tumbuh</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Aset/logo_ruangtumbuh-removebg-preview.png" sizes="32x32" type="image/png">
+    <style>
+        /* Program Notifications Section */
+        .programs-notifications {
+            padding: 100px 0;
+            background-color: var(--cream);
+        }
+
+        .notifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .notification-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .notification-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .notification-header {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .notification-header.close-regist {
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+            color: var(--white);
+        }
+
+        .notification-header.waiting-regist {
+            background: linear-gradient(135deg, #40916C 0%, #74C69D 100%);
+            color: var(--white);
+        }
+
+        .notification-header.in-development {
+            background: linear-gradient(135deg, #B7E4C7 0%, #D8F3DC 100%);
+            color: var(--green-primary);
+        }
+
+        .notification-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .notification-header.in-development .notification-icon {
+            background: rgba(27, 67, 50, 0.1);
+        }
+
+        .notification-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .notification-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .notification-body {
+            padding: 30px;
+        }
+
+        .notification-program-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .notification-message {
+            color: var(--text-gray);
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .notification-status {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .status-close {
+            background-color: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .status-waiting {
+            background-color: #FEF3C7;
+            color: #D97706;
+        }
+
+        .status-development {
+            background-color: #D1FAE5;
+            color: #059669;
+        }
+
+        .notification-footer {
+            padding: 20px 30px;
+            background-color: var(--cream-dark);
+            text-align: center;
+        }
+
+        .notification-footer p {
+            font-size: 0.9375rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .programs-notifications {
+                padding: 60px 0;
+            }
+
+            .notifications-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .notification-title {
+                font-size: 1.75rem;
+            }
+
+            .notification-program-name {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .notification-header {
+                padding: 24px;
+            }
+
+            .notification-body {
+                padding: 24px;
+            }
+
+            .notification-footer {
+                padding: 16px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                <span class="logo-text">Ruang Tumbuh</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">Tentang</a></li>
+                <li class="nav-item"><a href="index.html#vision" class="nav-link">Visi Misi</a></li>
+                <li class="nav-item"><a href="index.html#programs" class="nav-link">Program</a></li>
+                <li class="nav-item"><a href="index.html#team" class="nav-link">Tim</a></li>
+                <li class="nav-item"><a href="index.html#gallery" class="nav-link">Galeri</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Programs Notifications Section -->
+    <section class="programs-notifications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Program Kami</span>
+                <h2 class="section-title">Status <em>Program</em></h2>
+                <p class="section-desc">Informasi terkini seputar program-program Ruang Tumbuh</p>
+            </div>
+
+            <div class="notifications-grid">
+                <!-- Close Registration -->
+                <div class="notification-card">
+                    <div class="notification-header close-regist">
+                        <div class="notification-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <h3 class="notification-title">Close Regist</h3>
+                        <p class="notification-subtitle">Pendaftaran Ditutup</p>
+                    </div>
+                    <div class="notification-body">
+                        <h4 class="notification-program-name">Ruang Tumbuh Chapter 1</h4>
+                        <p class="notification-message">
+                            Halo sobat Ruang Tumbuh, terimakasih atas partisipasi dan semangat kalian dalam mengikuti offline Ruang Tumbuh Chapter 1. Dengan ini kami mengumumkan bahwa registrasi sudah di tutup karena 30 peserta sudah terdaftar.
+                        </p>
+                        <span class="notification-status status-close">Closed</span>
+                    </div>
+                    <div class="notification-footer">
+                        <p>Sampai bertemu di Jakarta untuk 30 peserta terpilih</p>
+                    </div>
+                </div>
+
+                <!-- Waiting Registration -->
+                <div class="notification-card">
+                    <div class="notification-header waiting-regist">
+                        <div class="notification-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="notification-title">Waiting Regist</h3>
+                        <p class="notification-subtitle">Menunggu Pendaftaran</p>
+                    </div>
+                    <div class="notification-body">
+                        <h4 class="notification-program-name">Workshop: Building Confidence</h4>
+                        <p class="notification-message">
+                            Workshop pengembangan diri tentang membangun kepercayaan diri akan segera dibuka. Nantikan pengumuman selanjutnya untuk informasi pendaftaran.
+                        </p>
+                        <span class="notification-status status-waiting">Coming Soon</span>
+                    </div>
+                    <div class="notification-footer">
+                        <p>Stay tuned untuk update selanjutnya</p>
+                    </div>
+                </div>
+
+                <!-- In Development -->
+                <div class="notification-card">
+                    <div class="notification-header in-development">
+                        <div class="notification-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="notification-title">Dalam Pengembangan</h3>
+                        <p class="notification-subtitle">Sedang Disiapkan</p>
+                    </div>
+                    <div class="notification-body">
+                        <h4 class="notification-program-name">Green Action Program</h4>
+                        <p class="notification-message">
+                            Program aksi sosial dan lingkungan sedang dalam persiapan. Kami sedang mengembangkan konsep dan kemitraan untuk program yang berdampak.
+                        </p>
+                        <span class="notification-status status-development">In Progress</span>
+                    </div>
+                    <div class="notification-footer">
+                        <p>Program akan segera hadir</p>
+                    </div>
+                </div>
+
+                <!-- Another Close Registration Example -->
+                <div class="notification-card">
+                    <div class="notification-header close-regist">
+                        <div class="notification-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 class="notification-title">Close Regist</h3>
+                        <p class="notification-subtitle">Pendaftaran Ditutup</p>
+                    </div>
+                    <div class="notification-body">
+                        <h4 class="notification-program-name">Volunteer Program 2026</h4>
+                        <p class="notification-message">
+                            Terima kasih untuk semua yang sudah mendaftar. Seleksi volunteer sedang berlangsung dan hasil akan diumumkan minggu depan.
+                        </p>
+                        <span class="notification-status status-close">Selection Process</span>
+                    </div>
+                    <div class="notification-footer">
+                        <p>Total 50+ pendaftar terverifikasi</p>
+                    </div>
+                </div>
+
+                <!-- Another Waiting Registration -->
+                <div class="notification-card">
+                    <div class="notification-header waiting-regist">
+                        <div class="notification-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="notification-title">Waiting Regist</h3>
+                        <p class="notification-subtitle">Menunggu Pendaftaran</p>
+                    </div>
+                    <div class="notification-body">
+                        <h4 class="notification-program-name">Youth Leadership Summit</h4>
+                        <p class="notification-message">
+                            Summit kepemimpinan muda nasional sedang dalam persiapan. Akan ada pembicara inspiratif dan workshop interaktif.
+                        </p>
+                        <span class="notification-status status-waiting">Coming Soon</span>
+                    </div>
+                    <div class="notification-footer">
+                        <p>Target: 200 peserta dari seluruh Indonesia</p>
+                    </div>
+                </div>
+
+                <!-- Another In Development -->
+                <div class="notification-card">
+                    <div class="notification-header in-development">
+                        <div class="notification-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="notification-title">Dalam Pengembangan</h3>
+                        <p class="notification-subtitle">Sedang Disiapkan</p>
+                    </div>
+                    <div class="notification-body">
+                        <h4 class="notification-program-name">Mentoring Program</h4>
+                        <p class="notification-message">
+                            Program mentoring one-on-one dengan profesional sedang dikembangkan. Akan mencocokkan mentor sesuai dengan bidang minat peserta.
+                        </p>
+                        <span class="notification-status status-development">In Progress</span>
+                    </div>
+                    <div class="notification-footer">
+                        <p>Launching Q4 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                        <span class="logo-text">Ruang Tumbuh</span>
+                    </a>
+                    <p>Ekosistem pengembangan diri bagi generasi muda Indonesia yang menginspirasi, memberdayakan, dan menciptakan dampak berkelanjutan.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>ruangtumbuhh.id@gmail.com</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span><a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank">@ruangtumbuhh.id</a></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span><a href="https://wa.me/6285147303364" target="_blank">Satria Gigih Alyuri Founder</a></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Indonesia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tautan</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#about">Tentang</a></li>
+                        <li><a href="index.html#programs">Program</a></li>
+                        <li><a href="index.html#gallery">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8Pf8MAInPkNClK083G" target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ruang Tumbuh. Dibuat dengan <i class="fas fa-heart"></i> untuk generasi muda Indonesia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
