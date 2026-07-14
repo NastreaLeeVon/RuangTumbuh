@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Close Regist - Ruang Tumbuh</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Aset/logo_ruangtumbuh-removebg-preview.png" sizes="32x32" type="image/png">
+    <style>
+        .program-status-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 50%, #40916C 100%);
+            padding: 40px 24px;
+        }
+        .status-card {
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .status-header {
+            padding: 50px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+            color: var(--white);
+        }
+        .status-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+        }
+        .status-title {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .status-subtitle {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        .status-body {
+            padding: 35px;
+            text-align: center;
+        }
+        .status-program-name {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--green-primary);
+            margin-bottom: 16px;
+        }
+        .status-message {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 10px 28px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: #FEE2E2;
+            color: #DC2626;
+        }
+        .status-footer {
+            padding: 20px 35px;
+            background-color: var(--cream-dark);
+            text-align: center;
+        }
+        .status-footer p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+            padding: 12px 28px;
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        .back-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+        @media (max-width: 480px) {
+            .status-header { padding: 35px 20px; }
+            .status-body { padding: 25px 20px; }
+            .status-title { font-size: 1.8rem; }
+            .status-program-name { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="program-status-page">
+        <div class="status-card">
+            <div class="status-header">
+                <div class="status-icon">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <h1 class="status-title">Close Regist</h1>
+                <p class="status-subtitle">Pendaftaran Ditutup</p>
+            </div>
+            <div class="status-body">
+                <h2 class="status-program-name">Ruang Tumbuh Chapter 1</h2>
+                <p class="status-message">
+                    Halo sobat Ruang Tumbuh, terimakasih atas partisipasi dan semangat kalian dalam mengikuti offline Ruang Tumbuh Chapter 1. Dengan ini kami mengumumkan bahwa registrasi sudah di tutup karena 30 peserta sudah terdaftar.
+                </p>
+                <span class="status-badge">Closed</span>
+            </div>
+            <div class="status-footer">
+                <p>Sampai bertemu di Jakarta untuk 30 peserta terpilih</p>
+            </div>
+        </div>
+        <div class="back-wrapper">
+            <a href="index.html#programs" class="back-link">
+                <i class="fas fa-arrow-left"></i> Kembali ke Program
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                        <span class="logo-text">Ruang Tumbuh</span>
+                    </a>
+                    <p>Ekosistem pengembangan diri bagi generasi muda Indonesia yang menginspirasi, memberdayakan, dan menciptakan dampak berkelanjutan.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>ruangtumbuhh.id@gmail.com</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span><a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank">@ruangtumbuhh.id</a></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span><a href="https://wa.me/6285147303364" target="_blank">Satria Gigih Alyuri Founder</a></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Indonesia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tautan</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#about">Tentang</a></li>
+                        <li><a href="index.html#programs">Program</a></li>
+                        <li><a href="index.html#gallery">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8Pf8MAInPkNClK083G" target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ruang Tumbuh. Dibuat dengan <i class="fas fa-heart"></i> untuk generasi muda Indonesia.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
