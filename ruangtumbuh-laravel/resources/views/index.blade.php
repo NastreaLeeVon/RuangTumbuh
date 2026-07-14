@@ -499,7 +499,6 @@
                         <div class="video-play-btn"><i class="fas fa-play"></i></div>
                     </div>
                 </div>
-            
             </div>
 
             <!-- Gallery "Lainnya" Toggle Button -->
