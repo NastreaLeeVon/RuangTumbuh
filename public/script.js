@@ -668,8 +668,8 @@ function initTeamModal() {
             photo: 'Aset/Satria.jpeg',
             description: 'Founder Ruang Tumbuh yang menginisiasi lahirnya komunitas ini dengan visi membangun ekosistem pengembangan diri bagi generasi muda Indonesia. Dengan latar belakang pendidikan dan pengalaman dalam pengembangan sumber daya manusia, Satria percaya bahwa setiap anak muda memiliki potensi luar biasa yang hanya menunggu ruang yang tepat untuk berkembang.',
             social: [
-                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/satriaalyuri/' },
-                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6285147303364' },
+                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/satriaalyuri/', target: '_blank' },
+                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6285147303364', target: '_blank' },
             ],
             quote: 'Setiap anak muda adalah benih unggul yang hanya membutuhkan tanah subur untuk tumbuh. Ruang Tumbuh hadir untuk menjadi tanah tersebut.'
         },
@@ -679,8 +679,8 @@ function initTeamModal() {
             photo: 'Aset/Rere.jpeg',
             description: 'Berpengalaman dalam mengembangkan strategi organisasi, membangun kolaborasi, serta memastikan setiap program memberikan pengalaman yang bermakna bagi peserta. Teresia memiliki passion dalam membangun sistem yang berkelanjutan dan menciptakan dampak jangka panjang bagi komunitas.',
             social: [
-                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/teresibaraniii/' },
-                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6282114976525' },
+                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/teresibaraniii/', target: '_blank' },
+                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6282114976525', target: '_blank' },
             ],
             quote: 'Kolaborasi adalah kunci. Ketika kita bekerja bersama, dampak yang kita ciptakan menjadi jauh lebih besar daripada jumlah bagian-bagiannya.'
         },
@@ -690,28 +690,36 @@ function initTeamModal() {
             photo: 'Aset/Nad.jpeg',
             description: 'Berpengalaman dalam memperkuat pengembangan program dan komunitas, serta menciptakan lingkungan yang inklusif untuk belajar dan bertumbuh. Salsabila memastikan bahwa setiap program Ruang Tumbuh dirancang dengan pendekatan yang manusiawi dan berpusat pada kebutuhan peserta.',
             social: [
-                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/sslsabilazz9/' },
-                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6285810817104' },
-                { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/syifasalsabilanadhifah/' }
+                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/sslsabilazz9/', target: '_blank' },
+                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6285810817104', target: '_blank' },
+                { icon: 'fab fa-linkedin', url: 'https://www.linkedin.com/in/syifasalsabilanadhifah/', target: '_blank' }
             ],
             quote: 'Lingkungan yang aman dan suportif adalah fondasi dari setiap proses belajar yang bermakna. Di sinilah keberanian untuk tumbuh dimulai.'
         },
         4: {
-            name: 'Muhammad Nazriel',
+            name: 'Muhammad Nazriel Sofiuloh',
             role: 'Co-Founder',
             photo: 'Aset/Nazriel.jpeg',
             description: 'Berpengalaman dalam mendukung pengembangan organisasi, memperluas jejaring kemitraan, dan mendorong keberlanjutan Ruang Tumbuh. Nazriel berperan penting dalam membangun hubungan strategis dengan berbagai pihak untuk memastikan Ruang Tumbuh dapat terus berkembang dan memberikan dampak yang lebih luas.',
             social: [
-                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/nazriel_sof/' },
-                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6289521244039' },
-                { icon: 'fas fa-envelope', url: 'mnazriel04@gmail.com' }
+                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/nazriel_sof/', target: '_blank' },
+                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6289521244039', target: '_blank' },
+                { icon: 'fas fa-envelope', url: 'mnazriel04@gmail.com', target: '_blank' }
             ],
             quote: 'Keberlanjutan sebuah gerakan ditentukan oleh kemampuan kita membangun jembatan—antara visi dan aksi, antara mimpi dan realitas.'
         }
     };
 
-    // Open modal when team card is clicked
+    // Open modal when team card is clicked (but not when clicking social links)
     teamCards.forEach(card => {
+        // Prevent social links from triggering the modal
+        const socialLinks = card.querySelectorAll('.team-social a');
+        socialLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
         card.addEventListener('click', function() {
             const memberId = this.getAttribute('data-member');
             const member = teamMembers[memberId];
