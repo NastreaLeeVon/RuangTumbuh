@@ -702,9 +702,9 @@ function initTeamModal() {
             photo: 'Aset/Nazriel.jpeg',
             description: 'Berpengalaman dalam mendukung pengembangan organisasi, memperluas jejaring kemitraan, dan mendorong keberlanjutan Ruang Tumbuh. Nazriel berperan penting dalam membangun hubungan strategis dengan berbagai pihak untuk memastikan Ruang Tumbuh dapat terus berkembang dan memberikan dampak yang lebih luas.',
             social: [
-                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/nazriel_sof/', target: '_blank' },
-                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6289521244039', target: '_blank' },
-                { icon: 'fas fa-envelope', url: 'mnazriel04@gmail.com', target: '_blank' }
+                { icon: 'fab fa-instagram', url: 'https://www.instagram.com/nazriel_sof/' },
+                { icon: 'fab fa-whatsapp', url: 'https://wa.me/6289521244039' },
+                { icon: 'fas fa-envelope', url: 'mnazriel04@gmail.com' }
             ],
             quote: 'Keberlanjutan sebuah gerakan ditentukan oleh kemampuan kita membangun jembatan antara visi dan aksi, antara mimpi dan realitas.'
         }
@@ -738,6 +738,7 @@ function initTeamModal() {
                 member.social.forEach(social => {
                     const link = document.createElement('a');
                     link.href = social.url;
+                    link.target = '_blank';
                     link.innerHTML = `<i class="${social.icon}"></i>`;
                     link.setAttribute('aria-label', social.icon.split('-')[1] || 'Social');
                     socialContainer.appendChild(link);
