@@ -706,7 +706,7 @@ function initTeamModal() {
                 { icon: 'fab fa-whatsapp', url: 'https://wa.me/6289521244039', target: '_blank' },
                 { icon: 'fas fa-envelope', url: 'mnazriel04@gmail.com', target: '_blank' }
             ],
-            quote: 'Keberlanjutan sebuah gerakan ditentukan oleh kemampuan kita membangun jembatan—antara visi dan aksi, antara mimpi dan realitas.'
+            quote: 'Keberlanjutan sebuah gerakan ditentukan oleh kemampuan kita membangun jembatan antara visi dan aksi, antara mimpi dan realitas.'
         }
     };
 
