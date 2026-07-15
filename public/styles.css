@@ -1,9 +1,3 @@
-/* ========================================
-   RUANG TUMBUH - Stylesheet
-   Color Scheme: Cream & Dark Green
-   ======================================== */
-
-/* CSS Variables */
 :root {
     --cream: #FDF8F0;
     --cream-dark: #F5EDE0;
@@ -276,9 +270,7 @@ img {
     transform: rotate(-45deg);
 }
 
-/* ========================================
-   HERO SECTION
-   ======================================== */
+/* HERO SECTION */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -386,9 +378,7 @@ img {
     }
 }
 
-/* ========================================
-   BUTTONS
-   ======================================== */
+/* BUTTONS */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -430,9 +420,7 @@ img {
     width: 100%;
 }
 
-/* ========================================
-   ABOUT SECTION
-   ======================================== */
+/* ABOUT SECTION*/
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -534,9 +522,7 @@ img {
     letter-spacing: 1px;
 }
 
-/* ========================================
-   VISION & MISSION SECTION
-   ======================================== */
+/* VISION & MISSION SECTION */
 .vision-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -626,9 +612,7 @@ img {
     color: var(--text-gray);
 }
 
-/* ========================================
-   PROGRAMS SECTION
-   ======================================== */
+/* PROGRAMS SECTION */
 .programs-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -757,9 +741,7 @@ img {
     gap: 12px;
 }
 
-/* ========================================
-   TEAM SECTION
-   ======================================== */
+/* TEAM SECTION */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1217,7 +1199,6 @@ img {
     display: block;
 }
 
-/* Pastikan foto juga memenuhi area kotak */
 .gallery-image img.gallery-media {
     width: 100%;
     height: 100%;
@@ -1225,7 +1206,6 @@ img {
     object-position: center;
 }
 
-/* Pastikan video ikut memenuhi kotak seperti img (object-fit tidak selalu berlaku pada video) */
 .gallery-media.video {
     width: 100%;
     height: 100%;
@@ -1233,7 +1213,6 @@ img {
     object-position: center;
 }
 
-/* Pastikan elemen video benar-benar memenuhi area kotak */
 .gallery-image video.gallery-media {
     position: absolute;
     top: 0;
@@ -1247,7 +1226,6 @@ img {
     background: #000;
 }
 
-/* Video: tampilkan full rasio (tidak crop) agar terlihat dari atas sampe bawah */
 .gallery-image video.gallery-media {
     object-fit: contain;
     object-position: center;
@@ -1256,7 +1234,6 @@ img {
     max-height: 100%;
 }
 
-/* Saat modal dibuka */
 .video-modal video {
     width: 100%;
     height: auto;
@@ -1418,9 +1395,7 @@ img {
     opacity: 1;
 }
 
-/* ========================================
-   CONTACT SECTION
-   ======================================== */
+/* CONTACT SECTION */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -1517,9 +1492,7 @@ img {
     margin-top: 8px;
 }
 
-/* ========================================
-   GALLERY TOGGLE BUTTON
-   ======================================== */
+/* GALLERY TOGGLE BUTTON */
 .gallery-toggle-wrapper {
     display: flex;
     justify-content: center;
@@ -1571,9 +1544,7 @@ img {
     transition: all 0.3s ease;
 }
 
-/* ========================================
-   FOOTER CONTACT
-   ======================================== */
+/* FOOTER CONTACT */
 .footer-contact h4 {
     font-size: 1rem;
     font-weight: 600;
@@ -1611,9 +1582,7 @@ img {
     color: var(--cream);
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+/* FOOTER */
 .footer {
     background-color: var(--green-primary);
     color: var(--cream);
@@ -1715,9 +1684,7 @@ img {
     }
 }
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
+/* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
     .team-grid {
         grid-template-columns: repeat(2, 1fr);

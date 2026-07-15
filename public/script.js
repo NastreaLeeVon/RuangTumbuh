@@ -651,8 +651,7 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     });
 });
 
-/**
- * Team Modal functionality
+/** Team Modal functionality
  */
 function initTeamModal() {
     const teamCards = document.querySelectorAll('.team-card');
