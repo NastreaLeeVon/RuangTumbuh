@@ -683,6 +683,39 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    // Team Modal functionality for team-full.html
+    function openMemberModal(nama, role, divisi, foto, desc) {
+        document.getElementById('modalImage').src = foto;
+        document.getElementById('modalImage').alt = nama;
+        document.getElementById('modalRole').textContent = role;
+        document.getElementById('modalName').textContent = nama;
+        document.getElementById('modalDescription').textContent = desc;
+        document.getElementById('modalQuote').querySelector('span').textContent = desc;
+        
+        // Clear and hide social links for divisi members
+        const socialContainer = document.getElementById('modalSocial');
+        socialContainer.innerHTML = '';
+        
+        document.getElementById('teamModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMemberModal() {
+        document.getElementById('teamModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('teamModal').classList.contains('active')) {
+            closeMemberModal();
+        }
+    });
+    
+    // Close modal on overlay/close button click
+    document.querySelector('.team-modal-overlay').addEventListener('click', closeMemberModal);
+    document.querySelector('.team-modal-close').addEventListener('click', closeMemberModal);
+    </script>
 </body>
 </html>
