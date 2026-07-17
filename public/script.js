@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initGalleryToggle();
     initMobileMenu();
     initTeamModal();
+    initTestimonialToggle();
 });
 
 /**
@@ -768,5 +769,40 @@ function initTeamModal() {
             closeModal();
         }
     });
+}
+
+/**
+ * Testimonial "Lainnya" toggle functionality
+ */
+function initTestimonialToggle() {
+    const toggleBtn = document.getElementById('testimonialToggleBtn');
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const isActive = toggleBtn.classList.contains('active');
+            const extraItems = document.querySelectorAll('.testimonial-extra');
+
+            if (isActive) {
+                extraItems.forEach(item => {
+                    item.classList.add('hidden');
+                });
+                toggleBtn.innerHTML = '<span class="btn-text">Lainnya</span> <i class="fas fa-chevron-down"></i>';
+                toggleBtn.classList.remove('active');
+            } else {
+                extraItems.forEach(item => {
+                    item.classList.remove('hidden');
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(10px)';
+                    requestAnimationFrame(() => {
+                        item.style.transition = 'all 0.3s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    });
+                });
+                toggleBtn.innerHTML = '<span class="btn-text">Tampilkan Lebih Sedikit</span> <i class="fas fa-chevron-up"></i>';
+                toggleBtn.classList.add('active');
+            }
+        });
+    }
 }
 
