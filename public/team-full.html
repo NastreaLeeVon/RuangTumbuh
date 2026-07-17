@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seluruh Tim - Ruang Tumbuh</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Aset/logo_ruangtumbuh-removebg-preview.png" sizes="32x32" type="image/png">
+    <style>
+        .team-full-page {
+            padding: 120px 0 60px;
+            background-color: var(--cream);
+        }
+        .team-full-section {
+            margin-bottom: 60px;
+        }
+        .team-full-section:last-child {
+            margin-bottom: 0;
+        }
+        .divisi-intro {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+        .divisi-intro strong {
+            color: var(--green-primary);
+        }
+        .divisi-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+        .divisi-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .divisi-header {
+            padding: 20px 30px;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-secondary));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .divisi-header i {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+        .divisi-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .divisi-body {
+            padding: 24px 30px;
+        }
+        .divisi-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--cream-darker);
+        }
+        .divisi-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .member-mini {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background-color: var(--cream);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+        .member-mini:hover {
+            background-color: var(--green-pale);
+        }
+        .member-mini-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--green-lighter);
+        }
+        .member-mini-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--green-primary);
+        }
+        .member-mini-info span {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        @media (max-width: 768px) {
+            .team-full-page { padding: 100px 0 40px; }
+            .divisi-header { padding: 16px 20px; }
+            .divisi-body { padding: 16px 20px; }
+            .divisi-members { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .divisi-members { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                <span class="logo-text">Ruang Tumbuh</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">Tentang</a></li>
+                <li class="nav-item"><a href="index.html#vision" class="nav-link">Visi Misi</a></li>
+                <li class="nav-item"><a href="index.html#programs" class="nav-link">Program</a></li>
+                <li class="nav-item"><a href="index.html#team" class="nav-link">Tim</a></li>
+                <li class="nav-item"><a href="index.html#gallery" class="nav-link">Galeri</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="team-full-page">
+        <div class="container">
+            <!-- Pencetus Section -->
+            <div class="team-full-section">
+                <div class="section-header">
+                    <span class="section-tag">Pencetus</span>
+                    <h2 class="section-title">Founder & <em>Co-Founder</em></h2>
+                    <p class="section-desc">Mereka yang menginisiasi lahirnya Ruang Tumbuh</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card" data-member="1">
+                        <div class="team-image">
+                            <img src="Aset/Satria.jpeg" alt="Muhammad Satria Gigih Alyuri" class="team-photo">
+                            <div class="team-role">Founder</div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Muhammad Satria Gigih Alyuri</h3>
+                            <p class="team-short-desc">Founder Ruang Tumbuh yang menginisiasi lahirnya komunitas ini...</p>
+                            <div class="team-social">
+                                <a href="https://www.instagram.com/satriaalyuri/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/6285147303364" aria-label="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" data-member="2">
+                        <div class="team-image">
+                            <img src="Aset/Rere.jpeg" alt="Theresia Cahayani Lambok Sibarani" class="team-photo">
+                            <div class="team-role">Co-Founder</div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Theresia Cahayani Lambok Sibarani</h3>
+                            <p class="team-short-desc">Berperan dalam mengembangkan strategi organisasi...</p>
+                            <div class="team-social">
+                                <a href="https://www.instagram.com/teresibaraniii/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/6282114976525" aria-label="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" data-member="3">
+                        <div class="team-image">
+                            <img src="Aset/Nad.jpeg" alt="Syifa Salsabila Nadhifah" class="team-photo">
+                            <div class="team-role">Co-Founder</div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Syifa Salsabila Nadhifah</h3>
+                            <p class="team-short-desc">Berperan dalam memperkuat pengembangan program dan komunitas...</p>
+                            <div class="team-social">
+                                <a href="https://www.instagram.com/sslsabilazz9/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/6285810817104" aria-label="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.linkedin.com/in/syifasalsabilanadhifah/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" data-member="4">
+                        <div class="team-image">
+                            <img src="Aset/Nazriel.jpeg" alt="Muhammad Nazriel Sofiuloh" class="team-photo">
+                            <div class="team-role">Co-Founder</div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Muhammad Nazriel Sofiuloh</h3>
+                            <p class="team-short-desc">Berperan dalam mendukung pengembangan organisasi...</p>
+                            <div class="team-social">
+                                <a href="https://www.instagram.com/nazriel_sof/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/6289521244039" aria-label="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:mnazriel04@gmail.com" aria-label="Email" target="_blank"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divisi Kepanitiaan -->
+            <div class="team-full-section">
+                <div class="section-header">
+                    <span class="section-tag">Struktur Organisasi</span>
+                    <h2 class="section-title">Divisi <em>Kepanitiaan</em></h2>
+                </div>
+
+                <div class="divisi-intro">
+                    <p>Halo semuanya! 👋</p>
+                    <p>Supaya persiapan <strong>Ruang Tumbuh Chapter 2</strong> berjalan lebih rapi dan terarah, kita akan membagi kepanitiaan ke beberapa divisi. Setiap divisi punya fokus masing-masing, jadi semua bisa bekerja maksimal tanpa tumpang tindih.</p>
+                </div>
+
+                <!-- Ketua -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-crown"></i>
+                        <h3>👑 Ketua</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Mengkoordinasikan seluruh panitia. Mengambil keputusan utama. Menjalin komunikasi dengan venue, pembicara, dan pihak eksternal. Memastikan seluruh timeline berjalan sesuai target.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Nadhifa&background=1B4332&color=fff&size=40&bold=true" alt="Nadhifa">
+                                <div class="member-mini-info">
+                                    <h4>Nadhifa</h4>
+                                    <span>Ketua</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wakil Ketua -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-star"></i>
+                        <h3>🤝 Wakil Ketua</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Mendampingi dan membantu Ketua. Mengawasi progres setiap divisi. Menjadi penghubung antar divisi. Menggantikan Ketua apabila berhalangan.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Satria&background=2D6A4F&color=fff&size=40&bold=true" alt="Satria">
+                                <div class="member-mini-info">
+                                    <h4>Satria</h4>
+                                    <span>Wakil Ketua</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisi Acara -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>🎯 Divisi Acara</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Menyusun konsep acara. Membuat rundown secara detail. Menyiapkan games, challenge, dan flow kegiatan. Berkoordinasi dengan MC, moderator, dan fasilitator. Memastikan seluruh rangkaian acara berjalan sesuai rundown.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Tim+Inti&background=40916C&color=fff&size=40&bold=true" alt="Tim Inti">
+                                <div class="member-mini-info">
+                                    <h4>Tim Inti</h4>
+                                    <span>Koordinator</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Emily&background=74C69D&color=fff&size=40&bold=true" alt="Emily">
+                                <div class="member-mini-info">
+                                    <h4>Emily</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Izzu&background=B7E4C7&color=1B4332&size=40&bold=true" alt="Izzu">
+                                <div class="member-mini-info">
+                                    <h4>Izzu</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisi Operasional -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>⚙️ Divisi Operasional</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Mengurus venue dan layout ruangan. Menyiapkan perlengkapan acara. Mengatur registrasi peserta. Mengelola konsumsi panitia, pembicara, dan peserta. Memastikan seluruh kebutuhan teknis tersedia.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=40&bold=true" alt="Yemima">
+                                <div class="member-mini-info">
+                                    <h4>Yemima</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=40&bold=true" alt="Nazriel">
+                                <div class="member-mini-info">
+                                    <h4>Nazriel</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisi PDD -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-camera"></i>
+                        <h3>📸 Divisi Media & Dokumentasi (PDD)</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Mengambil foto dan video selama acara. Membuat konten untuk media sosial. Menyiapkan desain publikasi bila diperlukan. Membuat dokumentasi dan recap setelah acara.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Fathur&background=40916C&color=fff&size=40&bold=true" alt="Fathur">
+                                <div class="member-mini-info">
+                                    <h4>Fathur</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=40&bold=true" alt="Faris">
+                                <div class="member-mini-info">
+                                    <h4>Faris</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Jerico&background=B7E4C7&color=1B4332&size=40&bold=true" alt="Jerico">
+                                <div class="member-mini-info">
+                                    <h4>Jerico</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisi Humas -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-handshake"></i>
+                        <h3>🤝 Divisi Humas & Partnership</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Berkomunikasi dengan pihak kampus. Menghubungi pembicara, media partner, maupun sponsor. Menjalin kerja sama dengan pihak eksternal. Mengurus surat-menyurat dan perizinan.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=40&bold=true" alt="Radiant">
+                                <div class="member-mini-info">
+                                    <h4>Radiant</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=40&bold=true" alt="Dafi">
+                                <div class="member-mini-info">
+                                    <h4>Dafi</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divisi Peserta -->
+                <div class="divisi-card">
+                    <div class="divisi-header">
+                        <i class="fas fa-users"></i>
+                        <h3>🙋 Divisi Peserta</h3>
+                    </div>
+                    <div class="divisi-body">
+                        <p class="divisi-desc">Mengelola pendaftaran peserta. Mengelola grup peserta. Memberikan informasi dan reminder. Menjawab pertanyaan peserta. Memastikan kebutuhan peserta selama acara terpenuhi.</p>
+                        <div class="divisi-members">
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Rere&background=40916C&color=fff&size=40&bold=true" alt="Rere">
+                                <div class="member-mini-info">
+                                    <h4>Rere</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                            <div class="member-mini">
+                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=40&bold=true" alt="Dimas">
+                                <div class="member-mini-info">
+                                    <h4>Dimas</h4>
+                                    <span>Anggota</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                        <span class="logo-text">Ruang Tumbuh</span>
+                    </a>
+                    <p>Ekosistem pengembangan diri bagi generasi muda Indonesia yang menginspirasi, memberdayakan, dan menciptakan dampak berkelanjutan.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>ruangtumbuhh.id@gmail.com</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span><a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank">@ruangtumbuhh.id</a></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span><a href="https://wa.me/6285147303364" target="_blank">Satria Gigih Alyuri Founder</a></span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Indonesia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tautan</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#about">Tentang</a></li>
+                        <li><a href="index.html#programs">Program</a></li>
+                        <li><a href="index.html#gallery">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8Pf8MAInPkNClK083G" target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ruang Tumbuh. Dibuat dengan <i class="fas fa-heart"></i> untuk generasi muda Indonesia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
