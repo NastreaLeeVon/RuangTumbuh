@@ -32,87 +32,30 @@
         .divisi-intro strong {
             color: var(--green-primary);
         }
-        .divisi-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 30px;
-            transition: var(--transition);
-        }
-        .divisi-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-        .divisi-header {
-            padding: 20px 30px;
-            background: linear-gradient(135deg, var(--green-primary), var(--green-secondary));
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .divisi-header i {
-            font-size: 1.5rem;
-            opacity: 0.9;
-        }
-        .divisi-header h3 {
+        .divisi-header-title {
             font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        .divisi-body {
-            padding: 24px 30px;
-        }
-        .divisi-desc {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            line-height: 1.7;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--cream-darker);
-        }
-        .divisi-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 16px;
-        }
-        .member-mini {
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 14px;
-            background-color: var(--cream);
+        }
+        .divisi-header-title i {
+            color: var(--green-light);
+        }
+        .divisi-header-title .divisi-emoji {
+            font-size: 1.8rem;
+        }
+        .divisi-desc {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: var(--cream-dark);
             border-radius: var(--radius-md);
-            transition: var(--transition);
-        }
-        .member-mini:hover {
-            background-color: var(--green-pale);
-        }
-        .member-mini-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 2px solid var(--green-lighter);
-        }
-        .member-mini-info h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--green-primary);
-        }
-        .member-mini-info span {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-        @media (max-width: 768px) {
-            .team-full-page { padding: 100px 0 40px; }
-            .divisi-header { padding: 16px 20px; }
-            .divisi-body { padding: 16px 20px; }
-            .divisi-members { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 480px) {
-            .divisi-members { grid-template-columns: 1fr; }
+            border-left: 4px solid var(--green-light);
         }
     </style>
 </head>
@@ -183,7 +126,7 @@
                         </div>
                         <div class="team-info">
                             <h3>Syifa Salsabila Nadhifah</h3>
-                            <p class="team-short-desc">Berperan dalam memperkuat pengembangan program dan komunitas...</p>
+                            <p class="team-short-desc">Berperan dalam memperkuat pengembangan program...</p>
                             <div class="team-social">
                                 <a href="https://www.instagram.com/sslsabilazz9/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 <a href="https://wa.me/6285810817104" aria-label="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -221,189 +164,238 @@
                     <p>Supaya persiapan <strong>Ruang Tumbuh Chapter 2</strong> berjalan lebih rapi dan terarah, kita akan membagi kepanitiaan ke beberapa divisi. Setiap divisi punya fokus masing-masing, jadi semua bisa bekerja maksimal tanpa tumpang tindih.</p>
                 </div>
 
-                <!-- Ketua -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-crown"></i>
-                        <h3>👑 Ketua</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Mengkoordinasikan seluruh panitia. Mengambil keputusan utama. Menjalin komunikasi dengan venue, pembicara, dan pihak eksternal. Memastikan seluruh timeline berjalan sesuai target.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Nadhifa&background=1B4332&color=fff&size=40&bold=true" alt="Nadhifa">
-                                <div class="member-mini-info">
-                                    <h4>Nadhifa</h4>
-                                    <span>Ketua</span>
+                <!-- 🔹 Ketua -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">👑</span> Ketua</h3>
+                    <p class="divisi-desc">Mengkoordinasikan seluruh panitia. Mengambil keputusan utama. Menjalin komunikasi dengan venue, pembicara, dan pihak eksternal. Memastikan seluruh timeline berjalan sesuai target.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Nadhifa&background=1B4332&color=fff&size=400&bold=true" alt="Nadhifa">
+                                <div class="team-role">Ketua</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Nadhifa</h3>
+                                <p class="team-short-desc">Mengkoordinasikan seluruh panitia Chapter 2</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Wakil Ketua -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-star"></i>
-                        <h3>🤝 Wakil Ketua</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Mendampingi dan membantu Ketua. Mengawasi progres setiap divisi. Menjadi penghubung antar divisi. Menggantikan Ketua apabila berhalangan.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Satria&background=2D6A4F&color=fff&size=40&bold=true" alt="Satria">
-                                <div class="member-mini-info">
-                                    <h4>Satria</h4>
-                                    <span>Wakil Ketua</span>
+                <!-- 🔹 Wakil Ketua -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">🤝</span> Wakil Ketua</h3>
+                    <p class="divisi-desc">Mendampingi dan membantu Ketua. Mengawasi progres setiap divisi. Menjadi penghubung antar divisi. Menggantikan Ketua apabila berhalangan.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Satria&background=2D6A4F&color=fff&size=400&bold=true" alt="Satria">
+                                <div class="team-role">Wakil Ketua</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Satria</h3>
+                                <p class="team-short-desc">Mendampingi dan membantu ketua dalam koordinasi</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Divisi Acara -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-calendar-check"></i>
-                        <h3>🎯 Divisi Acara</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Menyusun konsep acara. Membuat rundown secara detail. Menyiapkan games, challenge, dan flow kegiatan. Berkoordinasi dengan MC, moderator, dan fasilitator. Memastikan seluruh rangkaian acara berjalan sesuai rundown.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Tim+Inti&background=40916C&color=fff&size=40&bold=true" alt="Tim Inti">
-                                <div class="member-mini-info">
-                                    <h4>Tim Inti</h4>
-                                    <span>Koordinator</span>
+                <!-- 🔹 Divisi Acara -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">🎯</span> Divisi Acara</h3>
+                    <p class="divisi-desc">Menyusun konsep acara. Membuat rundown secara detail. Menyiapkan games, challenge, dan flow kegiatan. Berkoordinasi dengan MC, moderator, dan fasilitator. Memastikan seluruh rangkaian acara berjalan sesuai rundown.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Tim+Inti&background=40916C&color=fff&size=400&bold=true" alt="Tim Inti">
+                                <div class="team-role">Koordinator</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Tim Inti</h3>
+                                <p class="team-short-desc">Koordinator Divisi Acara</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Emily&background=74C69D&color=fff&size=40&bold=true" alt="Emily">
-                                <div class="member-mini-info">
-                                    <h4>Emily</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Emily&background=74C69D&color=fff&size=400&bold=true" alt="Emily">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Emily</h3>
+                                <p class="team-short-desc">Anggota Divisi Acara</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Izzu&background=B7E4C7&color=1B4332&size=40&bold=true" alt="Izzu">
-                                <div class="member-mini-info">
-                                    <h4>Izzu</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Izzu&background=B7E4C7&color=1B4332&size=400&bold=true" alt="Izzu">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Izzu</h3>
+                                <p class="team-short-desc">Anggota Divisi Acara</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Divisi Operasional -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>⚙️ Divisi Operasional</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Mengurus venue dan layout ruangan. Menyiapkan perlengkapan acara. Mengatur registrasi peserta. Mengelola konsumsi panitia, pembicara, dan peserta. Memastikan seluruh kebutuhan teknis tersedia.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=40&bold=true" alt="Yemima">
-                                <div class="member-mini-info">
-                                    <h4>Yemima</h4>
-                                    <span>Anggota</span>
+                <!-- 🔹 Divisi Operasional -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">⚙️</span> Divisi Operasional</h3>
+                    <p class="divisi-desc">Mengurus venue dan layout ruangan. Menyiapkan perlengkapan acara. Mengatur registrasi peserta. Mengelola konsumsi panitia, pembicara, dan peserta. Memastikan seluruh kebutuhan teknis tersedia.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=400&bold=true" alt="Yemima">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Yemima</h3>
+                                <p class="team-short-desc">Anggota Divisi Operasional</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=40&bold=true" alt="Nazriel">
-                                <div class="member-mini-info">
-                                    <h4>Nazriel</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true" alt="Nazriel">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Nazriel</h3>
+                                <p class="team-short-desc">Anggota Divisi Operasional</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Divisi PDD -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-camera"></i>
-                        <h3>📸 Divisi Media & Dokumentasi (PDD)</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Mengambil foto dan video selama acara. Membuat konten untuk media sosial. Menyiapkan desain publikasi bila diperlukan. Membuat dokumentasi dan recap setelah acara.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Fathur&background=40916C&color=fff&size=40&bold=true" alt="Fathur">
-                                <div class="member-mini-info">
-                                    <h4>Fathur</h4>
-                                    <span>Anggota</span>
+                <!-- 🔹 Divisi Media & Dokumentasi (PDD) -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">📸</span> Divisi Media & Dokumentasi (PDD)</h3>
+                    <p class="divisi-desc">Mengambil foto dan video selama acara. Membuat konten untuk media sosial. Menyiapkan desain publikasi bila diperlukan. Membuat dokumentasi dan recap setelah acara.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Fathur&background=40916C&color=fff&size=400&bold=true" alt="Fathur">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Fathur</h3>
+                                <p class="team-short-desc">Anggota Divisi Media & Dokumentasi</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=40&bold=true" alt="Faris">
-                                <div class="member-mini-info">
-                                    <h4>Faris</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=400&bold=true" alt="Faris">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Faris</h3>
+                                <p class="team-short-desc">Anggota Divisi Media & Dokumentasi</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Jerico&background=B7E4C7&color=1B4332&size=40&bold=true" alt="Jerico">
-                                <div class="member-mini-info">
-                                    <h4>Jerico</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Jerico&background=B7E4C7&color=1B4332&size=400&bold=true" alt="Jerico">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Jerico</h3>
+                                <p class="team-short-desc">Anggota Divisi Media & Dokumentasi</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Divisi Humas -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-handshake"></i>
-                        <h3>🤝 Divisi Humas & Partnership</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Berkomunikasi dengan pihak kampus. Menghubungi pembicara, media partner, maupun sponsor. Menjalin kerja sama dengan pihak eksternal. Mengurus surat-menyurat dan perizinan.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=40&bold=true" alt="Radiant">
-                                <div class="member-mini-info">
-                                    <h4>Radiant</h4>
-                                    <span>Anggota</span>
+                <!-- 🔹 Divisi Humas & Partnership -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">🤝</span> Divisi Humas & Partnership</h3>
+                    <p class="divisi-desc">Berkomunikasi dengan pihak kampus. Menghubungi pembicara, media partner, maupun sponsor. Menjalin kerja sama dengan pihak eksternal. Mengurus surat-menyurat dan perizinan.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=400&bold=true" alt="Radiant">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Radiant</h3>
+                                <p class="team-short-desc">Anggota Divisi Humas & Partnership</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=40&bold=true" alt="Dafi">
-                                <div class="member-mini-info">
-                                    <h4>Dafi</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=400&bold=true" alt="Dafi">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Dafi</h3>
+                                <p class="team-short-desc">Anggota Divisi Humas & Partnership</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Divisi Peserta -->
-                <div class="divisi-card">
-                    <div class="divisi-header">
-                        <i class="fas fa-users"></i>
-                        <h3>🙋 Divisi Peserta</h3>
-                    </div>
-                    <div class="divisi-body">
-                        <p class="divisi-desc">Mengelola pendaftaran peserta. Mengelola grup peserta. Memberikan informasi dan reminder. Menjawab pertanyaan peserta. Memastikan kebutuhan peserta selama acara terpenuhi.</p>
-                        <div class="divisi-members">
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Rere&background=40916C&color=fff&size=40&bold=true" alt="Rere">
-                                <div class="member-mini-info">
-                                    <h4>Rere</h4>
-                                    <span>Anggota</span>
+                <!-- 🔹 Divisi Peserta -->
+                <div class="team-full-section">
+                    <h3 class="divisi-header-title"><span class="divisi-emoji">🙋</span> Divisi Peserta</h3>
+                    <p class="divisi-desc">Mengelola pendaftaran peserta. Mengelola grup peserta. Memberikan informasi dan reminder. Menjawab pertanyaan peserta. Memastikan kebutuhan peserta selama acara terpenuhi.</p>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Rere&background=40916C&color=fff&size=400&bold=true" alt="Rere">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Rere</h3>
+                                <p class="team-short-desc">Anggota Divisi Peserta</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="member-mini">
-                                <img class="member-mini-avatar" src="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=40&bold=true" alt="Dimas">
-                                <div class="member-mini-info">
-                                    <h4>Dimas</h4>
-                                    <span>Anggota</span>
+                        </div>
+                        <div class="team-card">
+                            <div class="team-image">
+                                <img class="team-photo" src="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=400&bold=true" alt="Dimas">
+                                <div class="team-role">Anggota</div>
+                            </div>
+                            <div class="team-info">
+                                <h3>Dimas</h3>
+                                <p class="team-short-desc">Anggota Divisi Peserta</p>
+                                <div class="team-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
