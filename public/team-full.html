@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seluruh Tim - Ruang Tumbuh</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -420,7 +419,8 @@
             <div class="shape shape-4"></div>
         </div>
 
-            <!-- Divisi Kepanitiaan -->
+        <div class="container">
+             <!-- Divisi Kepanitiaan -->
             <div class="team-full-section">
                 <div class="section-header">
                     <span class="section-tag" style="background: rgba(255,255,255,0.2); color: var(--green-pale);">Struktur Organisasi</span>
@@ -770,42 +770,9 @@
     });
     
     // Close modal on overlay/close button click
-    const overlay = document.querySelector('.team-modal-overlay');
-    const closeBtn = document.querySelector('.team-modal-close');
-    
-    if (overlay) {
-        overlay.addEventListener('click', closeMemberModal);
-    }
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeMemberModal);
-    }
+    document.querySelector('.team-modal-overlay').addEventListener('click', closeMemberModal);
+    document.querySelector('.team-modal-close').addEventListener('click', closeMemberModal);
     
     // Add click handlers for all member cards (both .team-card and .member-card)
-    const cards = document.querySelectorAll('.team-card, .member-card');
-    console.log('Found cards:', cards.length);
-    
-    cards.forEach(card => {
+    document.querySelectorAll('.team-card, .member-card').forEach(card => {
         card.addEventListener('click', function(e) {
-            // Don't trigger if clicking on social links
-            if (e.target.closest('.team-social a') || e.target.closest('.member-card-social a')) {
-                return;
-            }
-            
-            // Get data attributes
-            const nama = this.getAttribute('data-nama');
-            const role = this.getAttribute('data-role');
-            const divisi = this.getAttribute('data-divisi');
-            const foto = this.getAttribute('data-foto');
-            const desc = this.getAttribute('data-desc');
-            
-            console.log('Card clicked:', nama, role, foto);
-            
-            if (nama && role && foto) {
-                openMemberModal(nama, role, divisi, foto, desc);
-            }
-        });
-    });
-    </script>
-    <script src="script.js"></script>
-</body>
-</html>
