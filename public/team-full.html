@@ -831,50 +831,47 @@
         document.body.style.overflow = '';
     }
     
-    // Wait for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Close modal on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && document.getElementById('teamModal').classList.contains('active')) {
-                closeMemberModal();
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('teamModal').classList.contains('active')) {
+            closeMemberModal();
+        }
+    });
+    
+    // Close modal on overlay/close button click
+    const overlay = document.querySelector('.team-modal-overlay');
+    const closeBtn = document.querySelector('.team-modal-close');
+    
+    if (overlay) {
+        overlay.addEventListener('click', closeMemberModal);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMemberModal);
+    }
+    
+    // Add click handlers for all member cards (both .team-card and .member-card)
+    const cards = document.querySelectorAll('.team-card, .member-card');
+    console.log('Found cards:', cards.length);
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't trigger if clicking on social links
+            if (e.target.closest('.team-social a') || e.target.closest('.member-card-social a')) {
+                return;
             }
-        });
-        
-        // Close modal on overlay/close button click
-        const overlay = document.querySelector('.team-modal-overlay');
-        const closeBtn = document.querySelector('.team-modal-close');
-        
-        if (overlay) {
-            overlay.addEventListener('click', closeMemberModal);
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeMemberModal);
-        }
-        
-        // Add click handlers for all member cards (both .team-card and .member-card)
-        const cards = document.querySelectorAll('.team-card, .member-card');
-        console.log('Found cards:', cards.length); // Debug
-        
-        cards.forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Don't trigger if clicking on social links
-                if (e.target.closest('.team-social a') || e.target.closest('.member-card-social a')) {
-                    return;
-                }
-                
-                // Get data attributes
-                const nama = this.getAttribute('data-nama');
-                const role = this.getAttribute('data-role');
-                const divisi = this.getAttribute('data-divisi');
-                const foto = this.getAttribute('data-foto');
-                const desc = this.getAttribute('data-desc');
-                
-                console.log('Card clicked:', nama, role, foto); // Debug
-                
-                if (nama && role && foto) {
-                    openMemberModal(nama, role, divisi, foto, desc);
-                }
-            });
+            
+            // Get data attributes
+            const nama = this.getAttribute('data-nama');
+            const role = this.getAttribute('data-role');
+            const divisi = this.getAttribute('data-divisi');
+            const foto = this.getAttribute('data-foto');
+            const desc = this.getAttribute('data-desc');
+            
+            console.log('Card clicked:', nama, role, foto);
+            
+            if (nama && role && foto) {
+                openMemberModal(nama, role, divisi, foto, desc);
+            }
         });
     });
     </script>
