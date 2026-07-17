@@ -776,3 +776,23 @@
     // Add click handlers for all member cards (both .team-card and .member-card)
     document.querySelectorAll('.team-card, .member-card').forEach(card => {
         card.addEventListener('click', function(e) {
+            // Don't trigger if clicking on social links
+            if (e.target.closest('.team-social a') || e.target.closest('.member-card-social a')) {
+                return;
+            }
+            
+            // Get data attributes
+            const nama = this.getAttribute('data-nama');
+            const role = this.getAttribute('data-role');
+            const divisi = this.getAttribute('data-divisi');
+            const foto = this.getAttribute('data-foto');
+            const desc = this.getAttribute('data-desc');
+            
+            if (nama && role && foto) {
+                openMemberModal(nama, role, divisi, foto, desc);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
