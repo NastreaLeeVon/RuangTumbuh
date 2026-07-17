@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="Aset/logo_ruangtumbuh-removebg-preview.png" sizes="32x32" type="image/png">
     <style>
-        .team-full-page { padding: 60px 0 60px; background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%); }
+        .team-full-page { padding: 60px 0 60px; background: linear-gradient(180deg, #FDF8F0 0%, #F5EDE0 50%, #EDE3D0 100%); }
         .team-full-section { margin-bottom: 60px; }
         .team-full-section:last-child { margin-bottom: 0; }
         
@@ -159,133 +159,11 @@
             transform: translateY(-2px);
         }
 
-        /* Modal styles */
-        .team-modal {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 10000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-        }
-        .team-modal.active { opacity: 1; visibility: visible; }
-        .team-modal-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-        }
-        .team-modal-content {
-            position: relative; background: var(--cream); border-radius: var(--radius-lg);
-            max-width: 800px; width: 90%; max-height: 90vh; overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            transform: translateY(30px); transition: all 0.3s ease;
-        }
-        .team-modal.active .team-modal-content { transform: translateY(0); }
-        .team-modal-close {
-            position: absolute; top: 16px; right: 16px;
-            width: 40px; height: 40px; background: var(--white); border: none;
-            border-radius: 50%; cursor: pointer; z-index: 10;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-gray); font-size: 1rem; box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-        }
-        .team-modal-close:hover { background: var(--green-primary); color: var(--white); transform: rotate(90deg); }
-        .team-modal-body {
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 0;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .team-modal-image {
-            height: 100%;
-            min-height: 400px;
-            overflow: hidden;
-        }
-        .team-modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .team-modal-info {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-        .team-modal-role {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--green-primary);
-            background-color: var(--green-pale);
-            padding: 6px 16px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            align-self: flex-start;
-        }
-        .team-modal-info h3 {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            color: var(--green-primary);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .team-modal-info > p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--text-gray);
-            margin-bottom: 24px;
-        }
-        .team-modal-social {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding-top: 20px;
-            border-top: 1px solid var(--cream-darker);
-        }
-        .team-modal-social a {
-            width: 40px;
-            height: 40px;
-            background-color: var(--cream-darker);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--green-primary);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        .team-modal-social a:hover {
-            background-color: var(--green-primary);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-        .team-modal-quote {
-            background: linear-gradient(135deg, var(--green-primary), var(--green-secondary));
-            color: var(--white);
-            padding: 20px;
-            border-radius: var(--radius-md);
-            margin-top: auto;
-        }
-        .team-modal-quote i {
-            font-size: 1.5rem;
-            opacity: 0.5;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .team-modal-quote span {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            font-style: italic;
-            display: block;
-        }
-
         @media (max-width: 768px) {
             .team-full-page { padding: 40px 0 40px; }
             .divisi-members-grid { grid-template-columns: repeat(2, 1fr); padding: 14px 16px; }
             .divisi-header-title { padding: 14px 16px; font-size: 1.2rem; }
             .divisi-desc { padding: 14px 16px; }
-            .team-modal-body { grid-template-columns: 1fr; }
-            .team-modal-image { min-height: 300px; }
         }
         @media (max-width: 480px) {
             .divisi-members-grid { grid-template-columns: 1fr; }
@@ -382,7 +260,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengkoordinasikan seluruh panitia. Mengambil keputusan utama. Menjalin komunikasi dengan venue, pembicara, dan pihak eksternal. Memastikan seluruh timeline berjalan sesuai target.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Nadhifa','Ketua','Divisi Kepanitiaan','https://ui-avatars.com/api/?name=Nadhifa&background=1B4332&color=fff&size=400&bold=true','Mengkoordinasikan seluruh panitia Chapter 2. Bertanggung jawab atas jalannya acara.')">
+                        <div class="member-card" data-member="ketua" data-nama="Nadhifa" data-role="Ketua" data-divisi="Divisi Kepanitiaan" data-foto="https://ui-avatars.com/api/?name=Nadhifa&background=1B4332&color=fff&size=400&bold=true" data-desc="Mengkoordinasikan seluruh panitia Chapter 2. Bertanggung jawab atas jalannya acara.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Nadhifa&background=1B4332&color=fff&size=400&bold=true" alt="Nadhifa">
                                 <div class="member-card-role">Ketua</div>
@@ -403,7 +281,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mendampingi dan membantu Ketua. Mengawasi progres setiap divisi. Menjadi penghubung antar divisi. Menggantikan Ketua apabila berhalangan.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Satria','Wakil Ketua','Divisi Kepanitiaan','https://ui-avatars.com/api/?name=Satria&background=2D6A4F&color=fff&size=400&bold=true','Mendampingi dan membantu ketua dalam koordinasi.')">
+                        <div class="member-card" data-member="wakil" data-nama="Satria" data-role="Wakil Ketua" data-divisi="Divisi Kepanitiaan" data-foto="https://ui-avatars.com/api/?name=Satria&background=2D6A4F&color=fff&size=400&bold=true" data-desc="Mendampingi dan membantu ketua dalam koordinasi.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Satria&background=2D6A4F&color=fff&size=400&bold=true" alt="Satria">
                                 <div class="member-card-role">Wakil Ketua</div>
@@ -424,7 +302,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Menyusun konsep acara. Membuat rundown secara detail. Menyiapkan games, challenge, dan flow kegiatan. Berkoordinasi dengan MC, moderator, dan fasilitator.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Tim Inti','Koordinator','Divisi Acara','https://ui-avatars.com/api/?name=Tim+Inti&background=40916C&color=fff&size=400&bold=true','Koordinator Divisi Acara.')">
+                        <div class="member-card" data-member="acara1" data-nama="Tim Inti" data-role="Koordinator" data-divisi="Divisi Acara" data-foto="https://ui-avatars.com/api/?name=Tim+Inti&background=40916C&color=fff&size=400&bold=true" data-desc="Koordinator Divisi Acara.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Tim+Inti&background=40916C&color=fff&size=400&bold=true" alt="Tim Inti">
                                 <div class="member-card-role">Koordinator</div>
@@ -437,7 +315,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Emily','Anggota','Divisi Acara','https://ui-avatars.com/api/?name=Emily&background=74C69D&color=fff&size=400&bold=true','Anggota Divisi Acara.')">
+                        <div class="member-card" data-member="acara2" data-nama="Emily" data-role="Anggota" data-divisi="Divisi Acara" data-foto="https://ui-avatars.com/api/?name=Emily&background=74C69D&color=fff&size=400&bold=true" data-desc="Anggota Divisi Acara.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Emily&background=74C69D&color=fff&size=400&bold=true" alt="Emily">
                                 <div class="member-card-role">Anggota</div>
@@ -450,7 +328,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Izzu','Anggota','Divisi Acara','https://ui-avatars.com/api/?name=Izzu&background=B7E4C7&color=1B4332&size=400&bold=true','Anggota Divisi Acara.')">
+                        <div class="member-card" data-member="acara3" data-nama="Izzu" data-role="Anggota" data-divisi="Divisi Acara" data-foto="https://ui-avatars.com/api/?name=Izzu&background=B7E4C7&color=1B4332&size=400&bold=true" data-desc="Anggota Divisi Acara.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Izzu&background=B7E4C7&color=1B4332&size=400&bold=true" alt="Izzu">
                                 <div class="member-card-role">Anggota</div>
@@ -471,7 +349,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengurus venue dan layout ruangan. Menyiapkan perlengkapan acara. Mengatur registrasi peserta. Mengelola konsumsi panitia, pembicara, dan peserta.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Yemima','Anggota','Divisi Operasional','https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=400&bold=true','Anggota Divisi Operasional.')">
+                        <div class="member-card" data-member="ops1" data-nama="Yemima" data-role="Anggota" data-divisi="Divisi Operasional" data-foto="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=400&bold=true" data-desc="Anggota Divisi Operasional.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=400&bold=true" alt="Yemima">
                                 <div class="member-card-role">Anggota</div>
@@ -484,7 +362,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Nazriel','Anggota','Divisi Operasional','https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true','Anggota Divisi Operasional.')">
+                        <div class="member-card" data-member="ops2" data-nama="Nazriel" data-role="Anggota" data-divisi="Divisi Operasional" data-foto="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true" data-desc="Anggota Divisi Operasional.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true" alt="Nazriel">
                                 <div class="member-card-role">Anggota</div>
@@ -505,7 +383,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengambil foto dan video selama acara. Membuat konten untuk media sosial. Menyiapkan desain publikasi bila diperlukan. Membuat dokumentasi dan recap setelah acara.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Fathur','Anggota','Divisi Media & Dokumentasi','https://ui-avatars.com/api/?name=Fathur&background=40916C&color=fff&size=400&bold=true','Anggota Divisi Media & Dokumentasi.')">
+                        <div class="member-card" data-member="pdd1" data-nama="Fathur" data-role="Anggota" data-divisi="Divisi Media & Dokumentasi" data-foto="https://ui-avatars.com/api/?name=Fathur&background=40916C&color=fff&size=400&bold=true" data-desc="Anggota Divisi Media & Dokumentasi.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Fathur&background=40916C&color=fff&size=400&bold=true" alt="Fathur">
                                 <div class="member-card-role">Anggota</div>
@@ -518,7 +396,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Faris','Anggota','Divisi Media & Dokumentasi','https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=400&bold=true','Anggota Divisi Media & Dokumentasi.')">
+                        <div class="member-card" data-member="pdd2" data-nama="Faris" data-role="Anggota" data-divisi="Divisi Media & Dokumentasi" data-foto="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=400&bold=true" data-desc="Anggota Divisi Media & Dokumentasi.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=400&bold=true" alt="Faris">
                                 <div class="member-card-role">Anggota</div>
@@ -531,7 +409,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Jerico','Anggota','Divisi Media & Dokumentasi','https://ui-avatars.com/api/?name=Jerico&background=B7E4C7&color=1B4332&size=400&bold=true','Anggota Divisi Media & Dokumentasi.')">
+                        <div class="member-card" data-member="pdd3" data-nama="Jerico" data-role="Anggota" data-divisi="Divisi Media & Dokumentasi" data-foto="https://ui-avatars.com/api/?name=Jerico&background=B7E4C7&color=1B4332&size=400&bold=true" data-desc="Anggota Divisi Media & Dokumentasi.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Jerico&background=B7E4C7&color=1B4332&size=400&bold=true" alt="Jerico">
                                 <div class="member-card-role">Anggota</div>
@@ -552,7 +430,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Berkomunikasi dengan pihak kampus. Menghubungi pembicara, media partner, maupun sponsor. Menjalin kerja sama dengan pihak eksternal. Mengurus surat-menyurat dan perizinan.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Radiant','Anggota','Divisi Humas & Partnership','https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=400&bold=true','Anggota Divisi Humas & Partnership.')">
+                        <div class="member-card" data-member="humas1" data-nama="Radiant" data-role="Anggota" data-divisi="Divisi Humas & Partnership" data-foto="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=400&bold=true" data-desc="Anggota Divisi Humas & Partnership.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=400&bold=true" alt="Radiant">
                                 <div class="member-card-role">Anggota</div>
@@ -565,7 +443,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Dafi','Anggota','Divisi Humas & Partnership','https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=400&bold=true','Anggota Divisi Humas & Partnership.')">
+                        <div class="member-card" data-member="humas2" data-nama="Dafi" data-role="Anggota" data-divisi="Divisi Humas & Partnership" data-foto="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=400&bold=true" data-desc="Anggota Divisi Humas & Partnership.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=400&bold=true" alt="Dafi">
                                 <div class="member-card-role">Anggota</div>
@@ -586,7 +464,7 @@
                 <div class="divisi-card-wrap">
                     <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengelola pendaftaran peserta. Mengelola grup peserta. Memberikan informasi dan reminder. Menjawab pertanyaan peserta. Memastikan kebutuhan peserta selama acara terpenuhi.</div>
                     <div class="divisi-members-grid">
-                        <div class="member-card" onclick="openMemberModal('Rere','Anggota','Divisi Peserta','https://ui-avatars.com/api/?name=Rere&background=40916C&color=fff&size=400&bold=true','Anggota Divisi Peserta.')">
+                        <div class="member-card" data-member="peserta1" data-nama="Rere" data-role="Anggota" data-divisi="Divisi Peserta" data-foto="https://ui-avatars.com/api/?name=Rere&background=40916C&color=fff&size=400&bold=true" data-desc="Anggota Divisi Peserta.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Rere&background=40916C&color=fff&size=400&bold=true" alt="Rere">
                                 <div class="member-card-role">Anggota</div>
@@ -599,7 +477,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" onclick="openMemberModal('Dimas','Anggota','Divisi Peserta','https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=400&bold=true','Anggota Divisi Peserta.')">
+                        <div class="member-card" data-member="peserta2" data-nama="Dimas" data-role="Anggota" data-divisi="Divisi Peserta" data-foto="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=400&bold=true" data-desc="Anggota Divisi Peserta.">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=400&bold=true" alt="Dimas">
                                 <div class="member-card-role">Anggota</div>
@@ -683,39 +561,6 @@
         </div>
     </footer>
 
-    <script>
-    // Team Modal functionality for team-full.html
-    function openMemberModal(nama, role, divisi, foto, desc) {
-        document.getElementById('modalImage').src = foto;
-        document.getElementById('modalImage').alt = nama;
-        document.getElementById('modalRole').textContent = role;
-        document.getElementById('modalName').textContent = nama;
-        document.getElementById('modalDescription').textContent = desc;
-        document.getElementById('modalQuote').querySelector('span').textContent = desc;
-        
-        // Clear and hide social links for divisi members
-        const socialContainer = document.getElementById('modalSocial');
-        socialContainer.innerHTML = '';
-        
-        document.getElementById('teamModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMemberModal() {
-        document.getElementById('teamModal').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && document.getElementById('teamModal').classList.contains('active')) {
-            closeMemberModal();
-        }
-    });
-    
-    // Close modal on overlay/close button click
-    document.querySelector('.team-modal-overlay').addEventListener('click', closeMemberModal);
-    document.querySelector('.team-modal-close').addEventListener('click', closeMemberModal);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
