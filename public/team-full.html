@@ -527,7 +527,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-card" data-nama="Muhamad Nazriel Sofiuloh" data-role="Anggota" data-divisi="Divisi Operasional" data-foto="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true" data-desc="Saya suka Mie ayam">
+                        <div class="member-card" data-nama="Muhamad Nazriel Sofiuloh" data-role="Anggota" data-divisi="Divisi Operasional" data-foto="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true" data-desc="Saya suka Mie ayam" data-quote="Saya suka Padang">
                             <div class="member-card-image">
                                 <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Nazriel&background=2D6A4F&color=fff&size=400&bold=true" alt="Nazriel">
                                 <div class="member-card-role">Anggota</div>
@@ -728,13 +728,13 @@
 
     <script>
     // Team Modal functionality for team-full.html
-    function openMemberModal(nama, role, divisi, foto, desc) {
+    function openMemberModal(nama, role, divisi, foto, desc, quote) {
         document.getElementById('modalImage').src = foto;
         document.getElementById('modalImage').alt = nama;
         document.getElementById('modalRole').textContent = role;
         document.getElementById('modalName').textContent = nama;
         document.getElementById('modalDescription').textContent = desc;
-        document.getElementById('modalQuote').querySelector('span').textContent = desc;
+        document.getElementById('modalQuote').querySelector('span').textContent = quote || desc;
         
         // Clear and hide social links for divisi members
         const socialContainer = document.getElementById('modalSocial');
@@ -774,9 +774,10 @@
             const divisi = this.getAttribute('data-divisi');
             const foto = this.getAttribute('data-foto');
             const desc = this.getAttribute('data-desc');
+            const quote = this.getAttribute('data-quote');
             
             if (nama && role && foto) {
-                openMemberModal(nama, role, divisi, foto, desc);
+                openMemberModal(nama, role, divisi, foto, desc, quote);
             }
         });
     });
