@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim - Dalam Pengembangan - Ruang Tumbuh</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Aset/logo_ruangtumbuh-removebg-preview.png" sizes="32x32" type="image/png">
+    <style>
+        /* Background sama persis dengan team-full.html */
+        .team-dev-page {
+            padding: 60px 0 60px;
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 40%, #40916C 70%, #D8F3DC 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-dev-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .dev-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 120px);
+        }
+    /* Floating decorative shapes */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--green-pale);
+            top: 10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--white);
+            top: 60%;
+            right: -3%;
+            animation-delay: 5s;
+        }
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--green-lighter);
+            bottom: 10%;
+            left: 10%;
+            animation-delay: 10s;
+        }
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: var(--green-pale);
+            top: 40%;
+            right: 10%;
+            animation-delay: 15s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(30px) rotate(240deg); }
+        }
+
+        /* Kotak "masih dalam pengembangan" */
+        .dev-card {
+            max-width: 520px;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            color: var(--white);
+            padding: 50px 40px;
+        }
+    .dev-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 24px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.6rem;
+            color: var(--green-pale);
+        }
+        .dev-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .dev-message {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--cream);
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .dev-badge {
+            display: inline-block;
+            padding: 10px 28px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: var(--green-pale);
+            color: var(--green-primary);
+        }
+        .back-wrapper {
+            margin-top: 30px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 480px) {
+            .team-dev-page { padding: 40px 0 40px; }
+            .dev-card { padding: 35px 20px; }
+            .dev-title { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="team-dev-page">
+        <!-- Floating decorative shapes -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <div class="container dev-content">
+            <div class="dev-card">
+                <div class="dev-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h1 class="dev-title">Masih Dalam Pengembangan</h1>
+                <p class="dev-message">
+                    Halaman Seluruh Tim sedang disiapkan. Kami sedang menyusun struktur organisasi dan detail setiap divisi. Nantikan segera ya! 🌱
+                </p>
+                <span class="dev-badge">In Progress</span>
+            </div>
+            <div class="back-wrapper">
+                <a href="index.html#team" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Tim
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                        <span class="logo-text">Ruang Tumbuh</span>
+                    </a>
+                    <p>Ekosistem pengembangan diri bagi generasi muda Indonesia yang menginspirasi, memberdayakan, dan menciptakan dampak berkelanjutan.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>ruangtumbuhh.id@gmail.com</span></div>
+                        <div class="footer-contact-item"><i class="fab fa-instagram"></i><span><a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank">@ruangtumbuhh.id</a></span></div>
+                        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><span><a href="https://wa.me/6285147303364" target="_blank">Satria Gigih Alyuri Founder</a></span></div>
+                        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Indonesia</span></div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tautan</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#about">Tentang</a></li>
+                        <li><a href="index.html#programs">Program</a></li>
+                        <li><a href="index.html#gallery">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8Pf8MAInPkNClK083G" target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Ruang Tumbuh. Dibuat dengan <i class="fas fa-heart"></i> untuk generasi muda Indonesia.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

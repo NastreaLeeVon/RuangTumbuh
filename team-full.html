@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seluruh Tim - Ruang Tumbuh</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Aset/logo_ruangtumbuh-removebg-preview.png" sizes="32x32" type="image/png">
+    <style>
+        .team-full-page { 
+            padding: 60px 0 60px; 
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 40%, #40916C 70%, #D8F3DC 100%); 
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-full-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .team-full-section { margin-bottom: 60px; position: relative; z-index: 1; }
+        .team-full-section:last-child { margin-bottom: 0; }
+        
+        .divisi-intro {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .divisi-intro strong { color: var(--green-pale); }
+        
+        .divisi-header-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .divisi-header-title i { font-size: 1.6rem; color: var(--green-pale); }
+        
+        .divisi-card-wrap {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+        .divisi-card-wrap:hover { 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            transform: translateY(-4px);
+        }
+        
+        .divisi-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            padding: 20px 24px;
+            border-bottom: 2px dashed var(--cream-darker);
+            background: var(--cream);
+        }
+        .divisi-desc i { color: var(--green-light); margin-right: 6px; }
+        
+        .divisi-members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            padding: 20px 24px;
+        }
+        
+        /* Member card sama dengan team-card di index.html */
+        .member-card {
+            background-color: var(--cream);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .member-card-image {
+            position: relative;
+            height: 250px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .member-card-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .member-card:hover .member-card-photo {
+            transform: scale(1.05);
+        }
+        .member-card-role {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--green-primary);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px;
+            text-align: center;
+        }
+        .member-card-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .member-card-info h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--green-primary);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .member-card-info .member-short-desc {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-light);
+            margin-bottom: 14px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .member-card-social {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .member-card-social a {
+            width: 34px;
+            height: 34px;
+            background-color: var(--cream-darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-primary);
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        .member-card-social a:hover {
+            background-color: var(--green-primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Decorative elements */
+        .section-header {
+            position: relative;
+            z-index: 2;
+        }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--green-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            padding: 6px 16px;
+            background-color: var(--green-pale);
+            border-radius: 20px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .section-title em {
+            font-style: italic;
+            color: var(--green-pale);
+        }
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--cream);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Floating decorative shapes */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--green-pale);
+            top: 10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--white);
+            top: 60%;
+            right: -3%;
+            animation-delay: 5s;
+        }
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--green-lighter);
+            bottom: 10%;
+            left: 10%;
+            animation-delay: 10s;
+        }
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: var(--green-pale);
+            top: 40%;
+            right: 10%;
+            animation-delay: 15s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(30px) rotate(240deg); }
+        }
+
+        /* Modal styles */
+        .team-modal {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 10000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .team-modal.active { opacity: 1; visibility: visible; }
+        .team-modal-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+        }
+        .team-modal-content {
+            position: relative; background: var(--cream); border-radius: var(--radius-lg);
+            max-width: 800px; width: 90%; max-height: 90vh; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(30px); transition: all 0.3s ease;
+        }
+        .team-modal.active .team-modal-content { transform: translateY(0); }
+        .team-modal-close {
+            position: absolute; top: 16px; right: 16px;
+            width: 40px; height: 40px; background: var(--white); border: none;
+            border-radius: 50%; cursor: pointer; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-gray); font-size: 1rem; box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .team-modal-close:hover { background: var(--green-primary); color: var(--white); transform: rotate(90deg); }
+        .team-modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 0;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .team-modal-image {
+            height: 100%;
+            min-height: 400px;
+            overflow: hidden;
+        }
+        .team-modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-modal-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .team-modal-role {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--green-primary);
+            background-color: var(--green-pale);
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+        .team-modal-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--green-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .team-modal-info > p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+        .team-modal-social {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--cream-darker);
+        }
+        .team-modal-social a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--cream-darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .team-modal-social a:hover {
+            background-color: var(--green-primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .team-modal-quote {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-secondary));
+            color: var(--white);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin-top: auto;
+        }
+        .team-modal-quote i {
+            font-size: 1.5rem;
+            opacity: 0.5;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .team-modal-quote span {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-style: italic;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .team-full-page { padding: 40px 0 40px; }
+            .divisi-members-grid { grid-template-columns: repeat(2, 1fr); padding: 14px 16px; }
+            .divisi-header-title { padding: 14px 16px; font-size: 1.2rem; }
+            .divisi-desc { padding: 14px 16px; }
+            .team-modal-body { grid-template-columns: 1fr; }
+            .team-modal-image { min-height: 300px; }
+        }
+        @media (max-width: 480px) {
+            .divisi-members-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="team-full-page">
+        <!-- Floating decorative shapes -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <div class="container">
+             <!-- Divisi Kepanitiaan -->
+            <div class="team-full-section">
+                <div class="section-header">
+                    <span class="section-tag" style="background: rgba(255,255,255,0.2); color: var(--green-pale);">Struktur Organisasi</span>
+                    <h2 class="section-title">Divisi <em>Kepanitiaan</em></h2>
+                </div>
+
+                <div class="divisi-intro">
+                    <p>Halo semuanya! 👋</p>
+                    <p>Supaya persiapan <strong>Ruang Tumbuh Chapter 2</strong> berjalan lebih rapi dan terarah, kita akan membagi kepanitiaan ke beberapa divisi. Setiap divisi punya fokus masing-masing, jadi semua bisa bekerja maksimal tanpa tumpang tindih.</p>
+                    <p style="margin-top:12px;font-size:0.9rem;color:var(--green-pale);"><i class="fas fa-hand-pointer"></i> Klik kartu anggota untuk melihat detail</p>
+                </div>
+
+                <!-- 🔹 Ketua -->
+                <div class="divisi-header-title"><i class="fas fa-crown"></i> Ketua</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengkoordinasikan seluruh panitia. Mengambil keputusan utama. Menjalin komunikasi dengan venue, pembicara, dan pihak eksternal. Memastikan seluruh timeline berjalan sesuai target.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Nadhifa" data-role="Ketua" data-divisi="Divisi Kepanitiaan" data-foto="Aset/Ka_Nad.jpeg" data-desc="Mengkoordinasikan seluruh panitia Chapter 2. Bertanggung jawab atas jalannya acara.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Ka_Nad.jpeg" alt="Nadhifa">
+                                <div class="member-card-role">Ketua</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Nadhifa</h4>
+                                <p class="member-short-desc">Mengkoordinasikan seluruh panitia Chapter 2</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔹 Wakil Ketua -->
+                <div class="divisi-header-title"><i class="fas fa-star"></i> Wakil Ketua</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mendampingi dan membantu Ketua. Mengawasi progres setiap divisi. Menjadi penghubung antar divisi. Menggantikan Ketua apabila berhalangan.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Satria" data-role="Wakil Ketua" data-divisi="Divisi Kepanitiaan" data-foto="Aset/Satria.jpeg" data-desc="Mendampingi dan membantu ketua dalam koordinasi.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Satria.jpeg" alt="Satria">
+                                <div class="member-card-role">Wakil Ketua</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Satria</h4>
+                                <p class="member-short-desc">Mendampingi dan membantu ketua dalam koordinasi</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔹 Divisi Acara -->
+                <div class="divisi-header-title"><i class="fas fa-calendar-check"></i> Divisi Acara</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Menyusun konsep acara. Membuat rundown secara detail. Menyiapkan games, challenge, dan flow kegiatan. Berkoordinasi dengan MC, moderator, dan fasilitator.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Emily" data-role="Anggota" data-divisi="Divisi Acara" data-foto="Aset/Emily.jpeg" data-desc="HAI HAI,aku Emily! Aku senang mengeksplorasi pengalaman baru, mudah beradaptasi, dan percaya bahwa setiap kesempatan adalah peluang untuk terus belajar dan berkembang." data-quote="Lebih baik gagal karena mencoba, daripada gagal karena tidak pernah mencoba.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Emily.jpeg" alt="Emily">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Emily Christy</h4>
+                                <p class="member-short-desc">Anggota Divisi Acara</p>
+                                <div class="member-card-social">
+                                    <a href="https://www.instagram.com/emilychri_/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-card" data-nama="Raffa Izzudin Saryono" data-role="Anggota" data-divisi="Divisi Acara" data-foto="Aset/izzu.jpeg" data-desc="Helour Izzu is here! Suka mencoba hal baru, senang bekerja sama, dan selalu berusaha memberikan yang terbaik di setiap kesempatan." data-quote="Bersinarlah seterang mungkin dimana pun kita berada">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/izzu.jpeg" alt="Izzu">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Raffa Izzudin Saryono</h4>
+                                <p class="member-short-desc">Helour Izzu is here! Suka mencoba hal baru...</p>
+                                <div class="member-card-social">
+                                    <a href="https://www.instagram.com/izzuwz/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔹 Divisi Operasional -->
+                <div class="divisi-header-title"><i class="fas fa-tools"></i> Divisi Operasional</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengurus venue dan layout ruangan. Menyiapkan perlengkapan acara. Mengatur registrasi peserta. Mengelola konsumsi panitia, pembicara, dan peserta.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Yemima" data-role="Anggota" data-divisi="Divisi Operasional" data-foto="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=400&bold=true" data-desc="Anggota Divisi Operasional.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Yemima&background=1B4332&color=fff&size=400&bold=true" alt="Yemima">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Yemima</h4>
+                                <p class="member-short-desc">Anggota Divisi Operasional</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-card" data-nama="Muhamad Nazriel Sofiuloh" data-role="Anggota" data-divisi="Divisi Operasional" data-foto="Aset/Nazriel3.jpeg" data-desc="Hello Everyone!, saya percaya bahwa setiap individu memiliki cerita, mimpi, dan potensi yang layak untuk berkembang" data-quote="Tidak ada perubahan besar yang terjadi dalam semalam. Semua dimulai dari satu tekad untuk mulai mencoba dan melangkah.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Nazriel3.jpeg" alt="Nazriel">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Muhamad Nazriel Sofiuloh</h4>
+                                <p class="member-short-desc">Hello Everyone!, saya percaya bahwa setiap individu memiliki cerita...</p>
+                                <div class="member-card-social">
+                                    <a href="https://www.instagram.com/nazriel_sof/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔹 Divisi Media & Dokumentasi (PDD) -->
+                <div class="divisi-header-title"><i class="fas fa-camera"></i> Divisi Media & Dokumentasi (PDD)</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengambil foto dan video selama acara. Membuat konten untuk media sosial. Menyiapkan desain publikasi bila diperlukan. Membuat dokumentasi dan recap setelah acara.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Akbar Fathur Rahman" data-role="Anggota" data-divisi="Divisi Media & Dokumentasi" data-foto="Aset/Fathur.jpeg" data-desc="Halo semuanya! senang bisa menjadi bagian dari perjalanan ini. semoga kehadiran website ini menjadi ruang untuk saling menginspirasi, berbagi informasi, dan terus bertumbuh bersama." data-quote="Langkah kecil hari ini adalah awal dari pencapaian besar di masa depan. terus belajar, berani mencoba, dan jangan pernah berhenti berkembang. 🌱✨">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Fathur.jpeg" alt="Fathur">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Akbar Fathur Rahman</h4>
+                                <p class="member-short-desc">Halo semuanya! senang bisa menjadi bagian dari perjalanan ini...</p>
+                                <div class="member-card-social">
+                                    <a href="https://www.instagram.com/akbrfthurr_/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-card" data-nama="Faris" data-role="Anggota" data-divisi="Divisi Media & Dokumentasi" data-foto="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=400&bold=true" data-desc="Anggota Divisi Media & Dokumentasi." data-quote="Saya suka Nasi Kecap">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Faris&background=74C69D&color=fff&size=400&bold=true" alt="Faris">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Faris</h4>
+                                <p class="member-short-desc">Anggota Divisi Media & Dokumentasi</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-card" data-nama="Jerico Evandino Mulya Kurniawan" data-role="Anggota" data-divisi="Divisi Media & Dokumentasi" data-foto="Aset/Jerico.jpeg" data-desc="HAIII HAII HAIII GUYSSS! akuu jeriii, aku seneng bgt mencoba hal baru, serta belajar dan beradaptasi dengan sesuatu peluang yang membuat kita berkembang" data-quote="Berhasil atau gagal, proses ini akan tetap berjalan, tidak ada kata menyerah sebelum impian itu tercapai.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Jerico.jpeg" alt="Jerico">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Jerico Evandino Mulya Kurniawan</h4>
+                                <p class="member-short-desc">HAIII HAII HAIII GUYSSS! akuu jeriii....</p>
+                                <div class="member-card-social">
+                                    <a href="https://www.instagram.com/jeriajakayanya/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔹 Divisi Humas & Partnership -->
+                <div class="divisi-header-title"><i class="fas fa-handshake"></i> Divisi Humas & Partnership</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Berkomunikasi dengan pihak kampus. Menghubungi pembicara, media partner, maupun sponsor. Menjalin kerja sama dengan pihak eksternal. Mengurus surat-menyurat dan perizinan.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Radiant" data-role="Anggota" data-divisi="Divisi Humas & Partnership" data-foto="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=400&bold=true" data-desc="Anggota Divisi Humas & Partnership.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Radiant&background=1B4332&color=fff&size=400&bold=true" alt="Radiant">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Radiant</h4>
+                                <p class="member-short-desc">Anggota Divisi Humas & Partnership</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-card" data-nama="Dafi" data-role="Anggota" data-divisi="Divisi Humas & Partnership" data-foto="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=400&bold=true" data-desc="Anggota Divisi Humas & Partnership.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Dafi&background=2D6A4F&color=fff&size=400&bold=true" alt="Dafi">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Dafi</h4>
+                                <p class="member-short-desc">Anggota Divisi Humas & Partnership</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 🔹 Divisi Peserta -->
+                <div class="divisi-header-title"><i class="fas fa-users"></i> Divisi Peserta</div>
+                <div class="divisi-card-wrap">
+                    <div class="divisi-desc"><i class="fas fa-quote-left"></i> Mengelola pendaftaran peserta. Mengelola grup peserta. Memberikan informasi dan reminder. Menjawab pertanyaan peserta. Memastikan kebutuhan peserta selama acara terpenuhi.</div>
+                    <div class="divisi-members-grid">
+                        <div class="member-card" data-nama="Rere" data-role="Anggota" data-divisi="Divisi Peserta" data-foto="Aset/Rere.jpeg" data-desc="Anggota Divisi Peserta.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="Aset/Rere.jpeg" alt="Rere">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Rere</h4>
+                                <p class="member-short-desc">Anggota Divisi Peserta</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-card" data-nama="Dimas" data-role="Anggota" data-divisi="Divisi Peserta" data-foto="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=400&bold=true" data-desc="Anggota Divisi Peserta.">
+                            <div class="member-card-image">
+                                <img class="member-card-photo" src="https://ui-avatars.com/api/?name=Dimas&background=74C69D&color=fff&size=400&bold=true" alt="Dimas">
+                                <div class="member-card-role">Anggota</div>
+                            </div>
+                            <div class="member-card-info">
+                                <h4>Dimas</h4>
+                                <p class="member-short-desc">Anggota Divisi Peserta</p>
+                                <div class="member-card-social">
+                                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Modal -->
+    <div id="teamModal" class="team-modal">
+        <div class="team-modal-overlay"></div>
+        <div class="team-modal-content">
+            <button class="team-modal-close" aria-label="Tutup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="team-modal-body">
+                <div class="team-modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="team-modal-info">
+                    <div class="team-modal-role" id="modalRole"></div>
+                    <h3 id="modalName"></h3>
+                    <p id="modalDescription"></p>
+                    <div class="team-modal-social" id="modalSocial"></div>
+                    <div class="team-modal-quote" id="modalQuote">
+                        <i class="fas fa-quote-left"></i>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img class="logo-icon" src="Aset/logo_ruangtumbuh-removebg-preview.png" alt="Ruang Tumbuh">
+                        <span class="logo-text">Ruang Tumbuh</span>
+                    </a>
+                    <p>Ekosistem pengembangan diri bagi generasi muda Indonesia yang menginspirasi, memberdayakan, dan menciptakan dampak berkelanjutan.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>ruangtumbuhh.id@gmail.com</span></div>
+                        <div class="footer-contact-item"><i class="fab fa-instagram"></i><span><a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank">@ruangtumbuhh.id</a></span></div>
+                        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><span><a href="https://wa.me/6285147303364" target="_blank">Satria Gigih Alyuri Founder</a></span></div>
+                        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Indonesia</span></div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Tautan</h4>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#about">Tentang</a></li>
+                        <li><a href="index.html#programs">Program</a></li>
+                        <li><a href="index.html#gallery">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ruangtumbuhh.id/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Vb8Pf8MAInPkNClK083G" target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Ruang Tumbuh. Dibuat dengan <i class="fas fa-heart"></i> untuk generasi muda Indonesia.</p></div>
+        </div>
+    </footer>
+
+    <script>
+    // Team Modal functionality for team-full.html
+    function openMemberModal(nama, role, divisi, foto, desc, quote) {
+        document.getElementById('modalImage').src = foto;
+        document.getElementById('modalImage').alt = nama;
+        document.getElementById('modalRole').textContent = role;
+        document.getElementById('modalName').textContent = nama;
+        document.getElementById('modalDescription').textContent = desc;
+        document.getElementById('modalQuote').querySelector('span').textContent = quote || desc;
+        
+        // Clear and hide social links for divisi members
+        const socialContainer = document.getElementById('modalSocial');
+        socialContainer.innerHTML = '';
+        
+        document.getElementById('teamModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMemberModal() {
+        document.getElementById('teamModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('teamModal').classList.contains('active')) {
+            closeMemberModal();
+        }
+    });
+    
+    // Close modal on overlay/close button click
+    document.querySelector('.team-modal-overlay').addEventListener('click', closeMemberModal);
+    document.querySelector('.team-modal-close').addEventListener('click', closeMemberModal);
+    
+    // Add click handlers for all member cards (both .team-card and .member-card)
+    document.querySelectorAll('.team-card, .member-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't trigger if clicking on social links
+            if (e.target.closest('.team-social a') || e.target.closest('.member-card-social a')) {
+                return;
+            }
+            
+            // Get data attributes
+            const nama = this.getAttribute('data-nama');
+            const role = this.getAttribute('data-role');
+            const divisi = this.getAttribute('data-divisi');
+            const foto = this.getAttribute('data-foto');
+            const desc = this.getAttribute('data-desc');
+            const quote = this.getAttribute('data-quote');
+            
+            if (nama && role && foto) {
+                openMemberModal(nama, role, divisi, foto, desc, quote);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
