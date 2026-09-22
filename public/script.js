@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initGalleryFilter();
     initGalleryToggle();
     initChapter2Toggle();
+    initChapter2Filter();
     initMobileMenu();
     initTeamModal();
     initTestimonialToggle();
@@ -178,7 +179,8 @@ function initCounterAnimation() {
  * Get currently active tab filter
  */
 function getActiveFilter() {
-    const activeTab = document.querySelector('.tab-btn.active');
+    // Scope to the Chapter 1 tab bar: the Momen Chapter 2 section has its own tabs
+    const activeTab = document.querySelector('#gallery .gallery-tabs .tab-btn.active');
     return activeTab ? activeTab.getAttribute('data-tab') : 'all';
 }
 
@@ -186,8 +188,8 @@ function getActiveFilter() {
  * Gallery filter functionality
  */
 function initGalleryFilter() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    // Scoped to Chapter 1 grid so Momen Chapter 2 items are not affected by the tabs
+    const tabBtns = document.querySelectorAll('#gallery .gallery-tabs .tab-btn');
+    // Scoped to Chapter 1 grid so Momen Chapter 2 items and tabs stay independent
     const galleryItems = document.querySelectorAll('#gallery .gallery-grid .gallery-item');
 
     tabBtns.forEach(btn => {
@@ -289,44 +291,136 @@ function initGalleryToggle() {
 }
 
 /**
- * Momen Chapter 2 gallery toggle button
+ * Momen Chapter 2 gallery: shared state for the tab filter (Semua / Foto / Video)
+ * and the "Lihat Semua Momen" reveal button.
+ */
+const chapter2State = {
+    filter: 'all',
+    expanded: false
+};
+
+/**
+ * Decide whether a Chapter 2 item is visible for the active tab + reveal state
+ */
+function isChapter2ItemVisible(item) {
+    const type = item.getAttribute('data-type');
+    const matchesTab = chapter2State.filter === 'all' || type === chapter2State.filter;
+
+    if (!matchesTab) {
+        return false;
+    }
+
+    // On the "Semua" tab the remaining moments stay collapsed until requested
+    if (chapter2State.filter === 'all' && item.classList.contains('chapter2-extra')) {
+        return chapter2State.expanded;
+    }
+
+    return true;
+}
+
+/**
+ * Apply the active Chapter 2 tab (and reveal state) to the Chapter 2 grid
+ */
+function applyChapter2Filter(animate) {
+    const items = document.querySelectorAll('#momen-chapter-2 .gallery-grid .gallery-item');
+
+    items.forEach(item => {
+        if (isChapter2ItemVisible(item)) {
+            item.classList.remove('hidden');
+
+            if (animate) {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.9)';
+                requestAnimationFrame(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                });
+            } else {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            }
+        } else if (animate) {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                item.classList.add('hidden');
+            }, 200);
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+
+    syncChapter2ToggleButton();
+}
+
+/**
+ * Keep the "Lihat Semua Momen" button in sync with the reveal state
+ */
+function syncChapter2ToggleButton() {
+    const toggleBtn = document.getElementById('chapter2ToggleBtn');
+
+    if (!toggleBtn) {
+        return;
+    }
+
+    // The reveal button only makes sense on the "Semua" tab, because the Foto
+    // and Video tabs already display every matching Chapter 2 moment.
+    const wrapper = document.getElementById('chapter2ToggleWrapper');
+    if (wrapper) {
+        wrapper.style.display = chapter2State.filter === 'all' ? '' : 'none';
+    }
+
+    if (chapter2State.expanded) {
+        toggleBtn.innerHTML = '<span class="btn-text">Tampilkan Lebih Sedikit</span> <i class="fas fa-chevron-up"></i>';
+        toggleBtn.classList.add('active');
+    } else {
+        toggleBtn.innerHTML = '<span class="btn-text">Lihat Semua Momen</span> <i class="fas fa-chevron-down"></i>';
+        toggleBtn.classList.remove('active');
+    }
+}
+
+/**
+ * Momen Chapter 2 "Lihat Semua Momen" toggle button
  */
 function initChapter2Toggle() {
     const toggleBtn = document.getElementById('chapter2ToggleBtn');
 
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            const isActive = toggleBtn.classList.contains('active');
-            const extraItems = document.querySelectorAll('.gallery-item.chapter2-extra');
-
-            if (isActive) {
-                // Hide the remaining Chapter 2 moments
-                extraItems.forEach(item => {
-                    item.classList.add('hidden');
-                });
-                toggleBtn.innerHTML = '<span class="btn-text">Lihat Semua Momen</span> <i class="fas fa-chevron-down"></i>';
-                toggleBtn.classList.remove('active');
-            } else {
-                // Reveal every remaining Chapter 2 moment with a soft pop-in
-                extraItems.forEach(item => {
-                    item.classList.remove('hidden');
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.9)';
-                    requestAnimationFrame(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    });
-                });
-                toggleBtn.innerHTML = '<span class="btn-text">Tampilkan Lebih Sedikit</span> <i class="fas fa-chevron-up"></i>';
-                toggleBtn.classList.add('active');
-            }
-        });
-
-        // Keep the reveal transition in sync with the CSS rule
-        document.querySelectorAll('.gallery-item.chapter2-extra').forEach(item => {
-            item.style.transition = 'all 0.3s ease';
-        });
+    if (!toggleBtn) {
+        return;
     }
+
+    toggleBtn.addEventListener('click', () => {
+        chapter2State.expanded = !chapter2State.expanded;
+        applyChapter2Filter(true);
+    });
+
+    // Keep the reveal transition in sync with the CSS rule
+    document.querySelectorAll('#momen-chapter-2 .gallery-item').forEach(item => {
+        item.style.transition = 'all 0.3s ease';
+    });
+
+    syncChapter2ToggleButton();
+}
+
+/**
+ * Momen Chapter 2 tab filter (Semua / Foto / Video)
+ */
+function initChapter2Filter() {
+    const tabBtns = document.querySelectorAll('#momen-chapter-2 .gallery-tabs .tab-btn');
+
+    if (!tabBtns.length) {
+        return;
+    }
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            chapter2State.filter = btn.getAttribute('data-tab') || 'all';
+            applyChapter2Filter(true);
+        });
+    });
 }
 
 
