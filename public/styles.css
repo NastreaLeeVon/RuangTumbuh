@@ -2082,13 +2082,17 @@ img {
     background-color: var(--cream);
 }
 
+.sponsor-banner .container {
+    max-width: 1400px;
+}
+
 .sponsor-banner-frame {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--cream-darker);
-    aspect-ratio: 16 / 9;
+    height: clamp(360px, 42vw, 560px);
     background-color: #101c15;
 }
 
@@ -2178,6 +2182,10 @@ img {
 @media (max-width: 576px) {
     .sponsor-banner {
         padding: 48px 0;
+    }
+
+    .sponsor-banner-frame {
+        height: 220px;
     }
 
     .sponsor-banner-dot {
