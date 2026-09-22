@@ -2096,7 +2096,7 @@ img {
     border: 1px solid var(--cream-darker);
     max-width: 1720px;
     margin: 0 auto;
-    height: clamp(360px, 42vw, 560px);
+    height: clamp(420px, 52vw, 700px);
     background-color: #101c15;
 }
 
