@@ -2092,38 +2092,87 @@ img {
     background-color: #101c15;
 }
 
-.sponsor-banner-video,
-.sponsor-banner-poster {
+.sponsor-banner-slides {
     position: absolute;
     inset: 0;
+}
+
+.sponsor-banner-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+}
+
+.sponsor-banner-slide.is-active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.sponsor-banner-slide.is-leaving {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.sponsor-banner-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.sponsor-banner-poster {
-    opacity: 0;
+.sponsor-banner-decor {
+    position: absolute;
+    border-radius: 50%;
     pointer-events: none;
+    z-index: 2;
 }
 
-.sponsor-banner-video[data-failed="true"] {
-    display: none;
+.sponsor-banner-decor-1 {
+    width: 220px;
+    height: 220px;
+    top: -70px;
+    right: -50px;
+    background: radial-gradient(circle, rgba(183, 228, 199, 0.35) 0%, rgba(183, 228, 199, 0) 70%);
 }
 
-.sponsor-banner-video[data-failed="true"] ~ .sponsor-banner-poster {
-    opacity: 1;
+.sponsor-banner-decor-2 {
+    width: 160px;
+    height: 160px;
+    bottom: -60px;
+    left: -40px;
+    background: radial-gradient(circle, rgba(27, 67, 50, 0.30) 0%, rgba(27, 67, 50, 0) 70%);
 }
 
-.sponsor-banner-caption {
-    text-align: center;
-    margin-top: 18px;
-    color: var(--text-light);
-    font-size: 0.95rem;
+.sponsor-banner-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
 }
 
-.sponsor-banner-caption strong {
-    color: var(--green-primary);
+.sponsor-banner-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: var(--transition);
+}
+
+.sponsor-banner-dot.is-active {
+    background-color: var(--green-lighter);
+    border-color: var(--green-lighter);
+    transform: scale(1.25);
 }
 
 @media (max-width: 576px) {
@@ -2131,9 +2180,9 @@ img {
         padding: 48px 0;
     }
 
-    .sponsor-banner-caption {
-        font-size: 0.85rem;
-        padding: 0 8px;
+    .sponsor-banner-dot {
+        width: 10px;
+        height: 10px;
     }
 }
 

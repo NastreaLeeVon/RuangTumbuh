@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initTeamModal();
     initTestimonialToggle();
+    initSponsorBanner();
 });
 
 /**
@@ -943,4 +944,64 @@ function initTestimonialToggle() {
         });
     }
 }
+/**
+ * Sponsor banner slider - geser ke kiri otomatis + navigasi dots
+ */
+function initSponsorBanner() {
+    const frame = document.querySelector('.sponsor-banner-frame');
+    if (!frame) {
+        return;
+    }
+    const slides = Array.from(frame.querySelectorAll('.sponsor-banner-slide'));
+    const dots = Array.from(frame.querySelectorAll('.sponsor-banner-dot'));
+    if (slides.length < 2) {
+        return;
+    }
+    let current = 0;
+    let timer = null;
+
+    function goTo(index) {
+        const prev = slides[current];
+        current = (index + slides.length) % slides.length;
+        const next = slides[current];
+        if (prev === next) {
+            return;
+        }
+        prev.classList.add('is-leaving');
+        prev.classList.remove('is-active');
+        next.classList.add('is-active');
+        window.setTimeout(() => {
+            prev.classList.remove('is-leaving');
+        }, 850);
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === current);
+        });
+    }
+
+    function start() {
+        stop();
+        timer = window.setInterval(() => {
+            goTo(current + 1);
+        }, 5000);
+    }
+
+    function stop() {
+        if (timer) {
+            window.clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+            goTo(parseInt(dot.dataset.slide, 10) || 0);
+            start();
+        });
+    });
+
+    frame.addEventListener('mouseenter', stop);
+    frame.addEventListener('mouseleave', start);
+    start();
+}
+
 
