@@ -2074,6 +2074,69 @@ img {
     transform: rotate(180deg);
 }
 
+/* ========================================
+   SPONSOR BANNER (Chapter 2)
+   ======================================== */
+.sponsor-banner {
+    padding: 70px 0;
+    background-color: var(--cream);
+}
+
+.sponsor-banner-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--cream-darker);
+    aspect-ratio: 16 / 9;
+    background-color: #101c15;
+}
+
+.sponsor-banner-video,
+.sponsor-banner-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.sponsor-banner-poster {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sponsor-banner-video[data-failed="true"] {
+    display: none;
+}
+
+.sponsor-banner-video[data-failed="true"] ~ .sponsor-banner-poster {
+    opacity: 1;
+}
+
+.sponsor-banner-caption {
+    text-align: center;
+    margin-top: 18px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.sponsor-banner-caption strong {
+    color: var(--green-primary);
+}
+
+@media (max-width: 576px) {
+    .sponsor-banner {
+        padding: 48px 0;
+    }
+
+    .sponsor-banner-caption {
+        font-size: 0.85rem;
+        padding: 0 8px;
+    }
+}
+
 @media (max-width: 992px) {
     .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
