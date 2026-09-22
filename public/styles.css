@@ -2084,19 +2084,20 @@ img {
 }
 
 .sponsor-banner .container {
-    max-width: 100%;
-    padding: 0 clamp(8px, 1.5vw, 24px);
+    max-width: none;
+    padding: 0;
 }
 
 .sponsor-banner-frame {
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    border: 1px solid var(--cream-darker);
-    max-width: 1720px;
+    border-top: 1px solid var(--cream-darker);
+    border-bottom: 1px solid var(--cream-darker);
+    max-width: none;
     margin: 0 auto;
-    height: clamp(420px, 52vw, 700px);
+    height: clamp(360px, 42vw, 560px);
     background-color: #101c15;
 }
 
