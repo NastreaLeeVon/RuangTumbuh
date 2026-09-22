@@ -1983,15 +1983,38 @@ img {
 .testimonial-author {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 14px;
     border-top: 1px solid var(--cream-darker);
     padding-top: 18px;
     margin-top: auto;
 }
 
 .testimonial-avatar {
-    display: none;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 3px solid var(--green-pale);
 }
+
+.testimonial-avatar i {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.testimonial-avatar.avatar-1 { background-color: #1B4332; }
+.testimonial-avatar.avatar-2 { background-color: #2D6A4F; }
+.testimonial-avatar.avatar-3 { background-color: #40916C; }
+.testimonial-avatar.avatar-4 { background-color: #52B788; }
+.testimonial-avatar.avatar-5 { background-color: #0E9594; }
+.testimonial-avatar.avatar-6 { background-color: #E76F51; }
+.testimonial-avatar.avatar-7 { background-color: #127369; }
+.testimonial-avatar.avatar-8 { background-color: #6A994E; }
+.testimonial-avatar.avatar-9 { background-color: #BC6C25; }
+.testimonial-avatar.avatar-10 { background-color: #9B2226; }
 
 .testimonial-info h4 {
     font-size: 0.95rem;
