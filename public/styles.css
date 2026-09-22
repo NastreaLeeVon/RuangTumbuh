@@ -1582,6 +1582,19 @@ img {
     transition: all 0.3s ease;
 }
 
+/* Momen Chapter 2 Section */
+.gallery-item.chapter2-extra.hidden {
+    display: none;
+}
+
+.gallery-item.chapter2-extra {
+    transition: all 0.3s ease;
+}
+
+.video-play-btn.ch2 {
+    background-color: rgba(46, 125, 50, 0.9);
+}
+
 /* FOOTER CONTACT */
 .footer-contact h4 {
     font-size: 1rem;

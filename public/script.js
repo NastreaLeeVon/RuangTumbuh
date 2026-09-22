@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCounterAnimation();
     initGalleryFilter();
     initGalleryToggle();
+    initChapter2Toggle();
     initMobileMenu();
     initTeamModal();
     initTestimonialToggle();
@@ -186,7 +187,8 @@ function getActiveFilter() {
  */
 function initGalleryFilter() {
     const tabBtns = document.querySelectorAll('.tab-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    // Scoped to Chapter 1 grid so Momen Chapter 2 items are not affected by the tabs
+    const galleryItems = document.querySelectorAll('#gallery .gallery-grid .gallery-item');
 
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -285,6 +287,48 @@ function initGalleryToggle() {
         });
     }
 }
+
+/**
+ * Momen Chapter 2 gallery toggle button
+ */
+function initChapter2Toggle() {
+    const toggleBtn = document.getElementById('chapter2ToggleBtn');
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const isActive = toggleBtn.classList.contains('active');
+            const extraItems = document.querySelectorAll('.gallery-item.chapter2-extra');
+
+            if (isActive) {
+                // Hide the remaining Chapter 2 moments
+                extraItems.forEach(item => {
+                    item.classList.add('hidden');
+                });
+                toggleBtn.innerHTML = '<span class="btn-text">Lihat Semua Momen</span> <i class="fas fa-chevron-down"></i>';
+                toggleBtn.classList.remove('active');
+            } else {
+                // Reveal every remaining Chapter 2 moment with a soft pop-in
+                extraItems.forEach(item => {
+                    item.classList.remove('hidden');
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    requestAnimationFrame(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    });
+                });
+                toggleBtn.innerHTML = '<span class="btn-text">Tampilkan Lebih Sedikit</span> <i class="fas fa-chevron-up"></i>';
+                toggleBtn.classList.add('active');
+            }
+        });
+
+        // Keep the reveal transition in sync with the CSS rule
+        document.querySelectorAll('.gallery-item.chapter2-extra').forEach(item => {
+            item.style.transition = 'all 0.3s ease';
+        });
+    }
+}
+
 
 /**
  * Mobile menu toggle
