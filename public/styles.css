@@ -1983,19 +1983,14 @@ img {
 .testimonial-author {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 0;
     border-top: 1px solid var(--cream-darker);
     padding-top: 18px;
     margin-top: auto;
 }
 
 .testimonial-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    border: 3px solid var(--green-pale);
+    display: none;
 }
 
 .testimonial-info h4 {
