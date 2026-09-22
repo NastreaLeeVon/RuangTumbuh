@@ -2078,12 +2078,14 @@ img {
    SPONSOR BANNER (Chapter 2)
    ======================================== */
 .sponsor-banner {
-    padding: 70px 0;
+    padding: 70px 0 70px;
     background-color: var(--cream);
+    overflow: hidden;
 }
 
 .sponsor-banner .container {
-    max-width: 1400px;
+    max-width: 100%;
+    padding: 0 clamp(8px, 1.5vw, 24px);
 }
 
 .sponsor-banner-frame {
@@ -2092,6 +2094,8 @@ img {
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--cream-darker);
+    max-width: 1720px;
+    margin: 0 auto;
     height: clamp(360px, 42vw, 560px);
     background-color: #101c15;
 }
